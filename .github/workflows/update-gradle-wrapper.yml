@@ -1,23 +1,24 @@
 name: Update Gradle Wrapper
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  push:
+    branches:
+      - temp
 
 permissions:
-  actions: none
-  checks: none
+  actions: write
+  checks: write
   contents: write
-  deployments: none
-  discussions: none
-  id-token: none
-  issues: none
-  packages: none
-  pages: none
+  deployments: write
+  discussions: write
+  id-token: write
+  issues: write
+  packages: write
+  pages: write
   pull-requests: write
-  repository-projects: none
-  security-events: none
-  statuses: none
+  repository-projects: write
+  security-events: write
+  statuses: write
 
 jobs:
   update-gradle-wrapper:
