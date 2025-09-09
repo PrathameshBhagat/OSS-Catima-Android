@@ -10,14 +10,14 @@ permissions:
   checks: write
   contents: write
   deployments: write
-  discussions: write
+  discussions: none
   id-token: write
   issues: none
   packages: none
   pages: none
   pull-requests: write
   repository-projects: write
-  security-events: write
+  security-events: none
   statuses: write
 
 jobs:
