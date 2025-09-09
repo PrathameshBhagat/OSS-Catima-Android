@@ -12,9 +12,9 @@ permissions:
   deployments: write
   discussions: write
   id-token: write
-  issues: write
-  packages: write
-  pages: write
+  issues: none
+  packages: none
+  pages: none
   pull-requests: write
   repository-projects: write
   security-events: write
