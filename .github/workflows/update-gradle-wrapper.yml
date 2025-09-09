@@ -11,14 +11,14 @@ permissions:
   contents: write
   deployments: write
   discussions: none
-  id-token: write
+  id-token: none
   issues: none
   packages: none
   pages: none
   pull-requests: write
-  repository-projects: write
+  repository-projects: none
   security-events: none
-  statuses: write
+  statuses: none
 
 jobs:
   update-gradle-wrapper:
