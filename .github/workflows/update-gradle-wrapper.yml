@@ -3,7 +3,7 @@ name: Update Gradle Wrapper
 on:
   push:
     branches:
-      - permissioms
+      - permissions
 
 permissions: 
    actions: none 
@@ -18,7 +18,8 @@ permissions:
    pull-requests: write 
    repository-projects: none 
    security-events: none 
-   statuses: none 
+   statuses: none
+
 
 jobs:
   update-gradle-wrapper:
