@@ -11,12 +11,12 @@ kotlin {
 
 android {
     namespace = "protect.card_locker"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "me.hackerchick.catima"
         minSdk = 21
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 152
         versionName = "2.38.0"
 
@@ -29,6 +29,7 @@ android {
 
         buildConfigField("boolean", "showDonate", "true")
         buildConfigField("boolean", "showRateOnGooglePlay", "false")
+        buildConfigField("boolean", "useAcraCrashReporter", "true")
     }
 
     buildTypes {
@@ -61,6 +62,9 @@ android {
             // Google doesn't allow donation links
             buildConfigField("boolean", "showDonate", "false")
             buildConfigField("boolean", "showRateOnGooglePlay", "true")
+
+            // Google Play already sends crashes to the Google Play Console
+            buildConfigField("boolean", "useAcraCrashReporter", "false")
         }
     }
 
@@ -111,7 +115,7 @@ dependencies {
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.core:core-remoteviews:1.1.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.exifinterface:exifinterface:1.4.1")
@@ -127,6 +131,11 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("com.jaredrummler:colorpicker:1.1.0")
     implementation("net.lingala.zip4j:zip4j:2.11.5")
+
+    // Crash reporting
+    val acraVersion = "5.12.0"
+    implementation("ch.acra:acra-mail:$acraVersion")
+    implementation("ch.acra:acra-dialog:$acraVersion")
 
     // Testing
     val androidXTestVersion = "1.7.0"

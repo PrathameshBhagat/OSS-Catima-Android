@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased - 153
+
+- Target Android 16
+- Remove "Screen orientation" feature (Google removed the ability for apps to control screen rotation when targeting Android 16)
+- Add crash reporter to FOSS build (not used in Google Play version, only in other app stores)
+
 ## v2.38.0 - 152 (2025-09-12)
 
 - Add support for .pkpasses files
