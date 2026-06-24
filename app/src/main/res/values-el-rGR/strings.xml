@@ -137,9 +137,6 @@
     <string name="app_resources">Πηγές τρίτων: <xliff:g id="app_resources_list">%s</xliff:g></string>
     <string name="selectColor">Επιλογή χρώματος</string>
     <string name="setIcon">Ορισμός εικονιδίου</string>
-    <string name="settings_sky_blue_theme">Γαλάζιο</string>
-    <string name="settings_green_theme">Πράσινο</string>
-    <string name="settings_brown_theme">Καφέ</string>
     <string name="sort_by_expiry">Λήξη</string>
     <plurals name="groupCardCount">
         <item quantity="one"><xliff:g>%d</xliff:g> κάρτα</item>
@@ -187,12 +184,6 @@
     <string name="settings_locale">Γλώσσα</string>
     <string name="settings_oled_dark">Απόλυτο μαύρο φόντο για το μαύρο θέμα</string>
     <string name="settings_system_locale">Σύστημα</string>
-    <string name="settings_theme_color">Χρώμα θέματος</string>
-    <string name="settings_catima_theme">Κάτιμα</string>
-    <string name="settings_pink_theme">Ροζ</string>
-    <string name="settings_magenta_theme">Φούξια</string>
-    <string name="settings_violet_theme">Βιολετί</string>
-    <string name="settings_blue_theme">Μπλε</string>
     <string name="app_contributors">Δημιουργήθηκε από: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="showMoreInfo">Εμφάνιση πληροφοριών</string>
     <string name="sort_by_name">Όνομα</string>
@@ -305,4 +296,14 @@
     <string name="acra_crash_email_subject">Αναφορά σφάλματος <xliff:g id="app_name">%s</xliff:g></string>
     <string name="pref_enable_acra">Ερώτηση για αποστολή αναφορών σφαλμάτων</string>
     <string name="pref_enable_acra_summary">Όταν είναι ενεργοποιημένη, θα σας ζητηθεί να αναφέρετε ένα σφάλμα όταν συμβεί. Οι αναφορές σφάλματος δεν αποστέλλονται ποτέ αυτόματα.</string>
+    <string name="copy_value">Αντιγραφή τιμής</string>
+    <string name="copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="nothing_to_copy">Δεν βρέθηκε τιμή</string>
+    <string name="barcodeEncoding">Κωδικοποίηση γραμμωτού κώδικα</string>
+    <string name="back">Πίσω</string>
+    <string name="settings_disable_nfc_while_viewing_card">Παύση NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Παύση του NFC για την αποτροπή ενεργοποίησης πληρωμών NFC κατά την προβολή μιας κάρτας</string>
+    <string name="nfc_blocked_while_viewing_card">Το NFC είναι σε παύση</string>
+    <string name="change_settings">Αλλαγή ρυθμίσεων</string>
+    <string name="nfc_block_system_error">Αποτυχία παύσης NFC</string>
 </resources>

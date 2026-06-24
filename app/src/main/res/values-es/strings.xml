@@ -10,7 +10,7 @@
     <string name="edit">Editar</string>
     <string name="delete">Eliminar</string>
     <string name="confirm">Confirmar</string>
-    <string name="ok">De acuerdo</string>
+    <string name="ok">Aceptar</string>
     <string name="sendLabel">Enviar…</string>
     <string name="editCardTitle">Editar tarjeta</string>
     <string name="addCardTitle">Añadir tarjeta</string>
@@ -134,7 +134,7 @@
         <item quantity="many"><xliff:g>%d</xliff:g> seleccionadas</item>
         <item quantity="other"><xliff:g>%d</xliff:g> seleccionadas</item>
     </plurals>
-    <string name="deleteTitle">Eliminar la tarjeta</string>
+    <string name="deleteTitle">Eliminar tarjeta</string>
     <string name="deleteConfirmation">¿Quiere eliminar permanentemente esta tarjeta\?</string>
     <plurals name="deleteCardsConfirmation">
         <item quantity="one">¿Borrar esta tarjeta <xliff:g>%d</xliff:g> permanentemente\?</item>
@@ -147,15 +147,6 @@
         <item quantity="other">Borrar <xliff:g>%d</xliff:g> tarjetas</item>
     </plurals>
     <string name="app_contributors">Hecho posible por: <xliff:g id="app_contributors">%s</xliff:g></string>
-    <string name="settings_brown_theme">Marrón</string>
-    <string name="settings_green_theme">Verde</string>
-    <string name="settings_sky_blue_theme">Azul cielo</string>
-    <string name="settings_blue_theme">Azul</string>
-    <string name="settings_violet_theme">Violeta</string>
-    <string name="settings_magenta_theme">Magenta</string>
-    <string name="settings_pink_theme">Rosa</string>
-    <string name="settings_theme_color">Color del tema</string>
-    <string name="settings_catima_theme">Catima</string>
     <string name="settings_system_locale">Sistema</string>
     <string name="settings_locale">Idioma</string>
     <string name="noGroupCards">Este grupo está vacío</string>
@@ -232,7 +223,7 @@
     <string name="height">Alto</string>
     <string name="switchToFrontImage">Cambiar a imagen frontal</string>
     <string name="openFrontImageInGalleryApp">Abrir imagen frontal en la aplicación de la galería</string>
-    <string name="openBackImageInGalleryApp">Abrir imagen trasera en la aplicación de la galería</string>
+    <string name="openBackImageInGalleryApp">Abrir imagen trasera en la aplicación de visor de imagen</string>
     <string name="setBarcodeHeight">Ajustar la altura del código de barras</string>
     <string name="donate">Donar</string>
     <string name="switchToBarcode">Cambiar a código de barras</string>
@@ -268,7 +259,7 @@
     <string name="app_name">Catima</string>
     <string name="continue_">Continuar</string>
     <string name="add_manually_warning_title">Se recomienda escanear</string>
-    <string name="add_manually_warning_message">En algunas tiendas, el valor del código de barras difiere del número escrito en la tarjeta. Por este motivo, es posible que la introducción manual del código de barras no siempre funcione. Se recomienda encarecidamente escanear el código de barras con la cámara. ¿Aún desea continuar?</string>
+    <string name="add_manually_warning_message">En algunas tarjetas, el valor del código de barras difiere del número escrito en la tarjeta. Por este motivo, introducir manualmente puede que no siempre funcione. Se recomienda analizar el código de barras con su cámara en su lugar. ¿Aún desea continuar?</string>
     <string name="spend">Gastar</string>
     <string name="receive">Recibió</string>
     <string name="amountParsingFailed">Importe incorrecto</string>
@@ -305,4 +296,20 @@
     <string name="card_list_widget_empty">Después de añadir algunas tarjetas de fidelidad en Catima, aparecerán aquí. Si tienes tarjetas, asegúrate de que no estén archivadas.</string>
     <string name="cardWithNumber">Tarjeta <xliff:g>%d</xliff:g></string>
     <string name="cardWithNumberAndLocale">Tarjeta <xliff:g>%d</xliff:g> (<xliff:g>%s</xliff:g>)</string>
+    <string name="pleaseDoNotRotateTheDevice">Por favor, no rote el dispositivo, ya que esto cancelará la acción</string>
+    <string name="acra_catima_has_crashed">Lo sentimos, pero <xliff:g id="app_name">%s</xliff:g> ha fallado. Por favor, ayúdenos a resolver esta incidencia enviándonos un reporte del error.</string>
+    <string name="acra_explain_crash">Si es posible, por favor añada más detalles sobre lo que estaba haciendo aquí:</string>
+    <string name="acra_crash_email_subject">Reporte del fallo <xliff:g id="app_name">%s</xliff:g></string>
+    <string name="pref_enable_acra">Solicitar envío de reportes de fallos</string>
+    <string name="pref_enable_acra_summary">Cuando está activado, se le pedirá que informe sobre un fallo cuando ocurra. Los informes de fallo nunca se envían automáticamente.</string>
+    <string name="copy_value">Copia valor</string>
+    <string name="copied_to_clipboard">Copiado al portapapeles</string>
+    <string name="nothing_to_copy">Ningún valor encontrado</string>
+    <string name="barcodeEncoding">Codificación de barra de código</string>
+    <string name="back">Atrás</string>
+    <string name="settings_disable_nfc_while_viewing_card">Pausar NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Pausa NFC para prevenir abonaciones NFC desde disparador mientras vea una tarjeta</string>
+    <string name="nfc_blocked_while_viewing_card">NFC está pausado</string>
+    <string name="change_settings">Cambiar ajustes</string>
+    <string name="nfc_block_system_error">Incorrecto al pausar NFC</string>
 </resources>

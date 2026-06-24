@@ -33,8 +33,8 @@
     <string name="exportFailed">Export konnte nicht durchgeführt werden</string>
     <string name="importing">Importiere…</string>
     <string name="exporting">Exportiere…</string>
-    <string name="importOptionFilesystemTitle">Aus Dateisystem importieren</string>
-    <string name="importOptionFilesystemExplanation">Wähle eine bestimmte Datei aus dem Dateisystem aus</string>
+    <string name="importOptionFilesystemTitle">Import vom Dateisystem</string>
+    <string name="importOptionFilesystemExplanation">Wähle eine bestimmte Datei aus dem Dateisystem</string>
     <string name="importOptionFilesystemButton">vom Dateisystem</string>
     <string name="about">Über</string>
     <string name="app_license">Freie Software, lizensiert unter der GPLv3+</string>
@@ -100,7 +100,7 @@
     <string name="importLoyaltyCardKeychain">Aus Loyalty Card Keychain importieren</string>
     <string name="importFidmeMessage">Wähle deinen „FidMe-Export“ zum Importieren und anschließend manuell die Barcodetypen aus.\nErstelle ihn aus deinem FidMe-Profil, indem du Datenschutz wählst und dann auf Meine Daten extrahieren drückst.</string>
     <string name="importFidme">Aus FidMe importieren</string>
-    <string name="importCatimaMessage">Wähle deinen „Catima-Export“ zum Importieren aus.\nErstelle diesen durch das Drücken auf Export im Import/Export-Menü in einer anderen Catima-Anwendung.</string>
+    <string name="importCatimaMessage">Wähle deinen „Catima-Export“ zum Importieren aus.\nExportiere diesen zuvor im Import/Export-Menü einer anderen Catima-Anwendung.</string>
     <string name="importCatima">Aus Catima importieren</string>
     <string name="setBarcodeId">Barcodewert festlegen</string>
     <string name="sameAsCardId">Entspricht Kartennummer</string>
@@ -144,15 +144,6 @@
     </plurals>
     <string name="settings_system_locale">System</string>
     <string name="settings_locale">Sprache</string>
-    <string name="settings_brown_theme">Braun</string>
-    <string name="settings_green_theme">Grün</string>
-    <string name="settings_sky_blue_theme">Himmelblau</string>
-    <string name="settings_blue_theme">Blau</string>
-    <string name="settings_violet_theme">Violett</string>
-    <string name="settings_magenta_theme">Magenta</string>
-    <string name="settings_pink_theme">Rosa</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_theme_color">Designfarbe</string>
     <string name="app_contributors">Ermöglicht durch: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="barcodeImageDescriptionWithType">Bild <xliff:g>%s</xliff:g> Barcode</string>
     <string name="sort_by">Sortieren nach</string>
@@ -305,4 +296,14 @@
     <string name="acra_explain_crash">Wenn möglich, bitte übermittle mehr Details zu dem, was du hier getan hast:</string>
     <string name="acra_catima_has_crashed">Es tut uns leid, aber <xliff:g id="app_name">%s</xliff:g> ist abgestürzt. Bitte hilf uns diesen Fehler zu beheben und übermittle uns einen Absturzbericht.</string>
     <string name="pleaseDoNotRotateTheDevice">Bitte drehe nicht das Gerät, weil sonst die Aktion abbricht</string>
+    <string name="copy_value">Kopiere Betrag</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="nothing_to_copy">Keinen Betrag gefunden</string>
+    <string name="barcodeEncoding">Barcode-Kodierung</string>
+    <string name="back">Zurück</string>
+    <string name="change_settings">Einstellungen ändern</string>
+    <string name="nfc_blocked_while_viewing_card">NFC ist vorübergehend deaktiviert</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Deaktiviert vorübergehend NFC, sodass keine NFC-Zahlungen ausgelöst werden können, während eine Karte angezeigt wird</string>
+    <string name="settings_disable_nfc_while_viewing_card">NFC vorübergehend deaktivieren</string>
+    <string name="nfc_block_system_error">Pausieren von NFC ist fehlgeschlagen</string>
 </resources>

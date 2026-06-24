@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.RemoteViews
 import androidx.core.widget.RemoteViewsCompat
 import protect.card_locker.DBHelper.LoyaltyCardArchiveFilter
+import protect.card_locker.cardview.LoyaltyCardViewActivity
 
 class ListWidget : AppWidgetProvider() {
     fun updateAll(context: Context) {
@@ -69,7 +70,9 @@ class ListWidget : AppWidgetProvider() {
             if (hasCards) {
                 // If we have cards, create the list
                 views = RemoteViews(context.packageName, R.layout.list_widget)
-                val templateIntent = Intent(context, LoyaltyCardViewActivity::class.java)
+                val templateIntent = Intent(context, LoyaltyCardViewActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
                 val pendingIntent = PendingIntent.getActivity(
                     context,
                     0,
@@ -100,8 +103,7 @@ class ListWidget : AppWidgetProvider() {
             val foreground = if (Utils.needsDarkForeground(headerColor)) Color.BLACK else Color.WHITE
             setInt(R.id.item_container_foreground, "setBackgroundColor", headerColor)
             val icon = loyaltyCard.getImageThumbnail(context)
-            // setImageViewIcon is not supported on Android 5, so force Android 5 down the text path
-            // FIXME: The icon flow causes a crash up to Android 12L, so SDK_INT is forced up from 23 to 33
+            // FIXME: The icon flow causes a crash up to Android 12L, so force anything below 33 down this path
             if (icon != null && Build.VERSION.SDK_INT >= 32) {
                 setInt(R.id.item_container_foreground, "setBackgroundColor", foreground)
                 setImageViewIcon(R.id.item_image, Icon.createWithBitmap(icon))

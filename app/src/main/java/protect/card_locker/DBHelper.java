@@ -10,8 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Currency;
@@ -23,7 +27,7 @@ import java.util.Set;
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Catima.db";
     public static final int ORIGINAL_DATABASE_VERSION = 1;
-    public static final int DATABASE_VERSION = 17;
+    public static final int DATABASE_VERSION = 20;
 
     // NB: changing these values requires a migration
     public static final int DEFAULT_ZOOM_LEVEL = 100;
@@ -49,6 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
         public static final String CARD_ID = "cardid";
         public static final String BARCODE_ID = "barcodeid";
         public static final String BARCODE_TYPE = "barcodetype";
+        public static final String BARCODE_ENCODING = "barcodeencoding";
         public static final String STAR_STATUS = "starstatus";
         public static final String LAST_USED = "lastused";
         public static final String ZOOM_LEVEL = "zoomlevel";
@@ -112,6 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 LoyaltyCardDbIds.CARD_ID + " TEXT not null," +
                 LoyaltyCardDbIds.BARCODE_ID + " TEXT," +
                 LoyaltyCardDbIds.BARCODE_TYPE + " TEXT," +
+                LoyaltyCardDbIds.BARCODE_ENCODING + " TEXT not null," +
                 LoyaltyCardDbIds.STAR_STATUS + " INTEGER DEFAULT '0'," +
                 LoyaltyCardDbIds.LAST_USED + " INTEGER DEFAULT '0', " +
                 LoyaltyCardDbIds.ZOOM_LEVEL + " INTEGER DEFAULT '" + DEFAULT_ZOOM_LEVEL + "', " +
@@ -335,6 +341,160 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE " + LoyaltyCardDbIds.TABLE
                     + " ADD COLUMN " + LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " INTEGER DEFAULT '100' ");
         }
+
+        if (oldVersion < 18 && newVersion >= 18) {
+            db.execSQL("ALTER TABLE " + LoyaltyCardDbIds.TABLE
+                    + " ADD COLUMN " + LoyaltyCardDbIds.BARCODE_ENCODING + " TEXT");
+        }
+
+        // On upgrade to 2.41.3, force all existing "Automatic" cards to ISO-8859-1.
+        // UTF-8 support was only added in 2.42.0, before that, all barcodes were saved without
+        // any encoding info. As many scanners deal badly with ECI info, automatically guessing
+        // UTF-8 for old barcodes may break them.
+        //
+        // New cards will be saved using either "Automatic" encoding to guess or, for pkpass files,
+        // whatever encoding is specified.
+        if (oldVersion < 19 && newVersion >= 19) {
+            db.execSQL("UPDATE " + LoyaltyCardDbIds.TABLE + " SET " + LoyaltyCardDbIds.BARCODE_ENCODING + " = 'ISO-8859-1' WHERE " + LoyaltyCardDbIds.BARCODE_ENCODING + " IS NULL");
+        }
+
+        if (oldVersion < 20 && newVersion >= 20) {
+            // SQLite doesn't support modify column
+            // So we need to create a temp column to make barcode encoding non-nullable
+            // https://www.sqlite.org/faq.html#q11
+            db.beginTransaction();
+
+            // First migrate all cards to ISO-8859-1
+            db.execSQL("UPDATE " + LoyaltyCardDbIds.TABLE + " SET " + LoyaltyCardDbIds.BARCODE_ENCODING + " = 'ISO-8859-1' WHERE " + LoyaltyCardDbIds.BARCODE_ENCODING + " IS NULL");
+
+            // create temp table
+            db.execSQL("CREATE TEMPORARY TABLE tmp (" +
+                    LoyaltyCardDbIds.ID + " INTEGER primary key autoincrement," +
+                    LoyaltyCardDbIds.STORE + " TEXT not null," +
+                    LoyaltyCardDbIds.NOTE + " TEXT not null," +
+                    LoyaltyCardDbIds.VALID_FROM + " INTEGER," +
+                    LoyaltyCardDbIds.EXPIRY + " INTEGER," +
+                    LoyaltyCardDbIds.BALANCE + " TEXT not null DEFAULT '0'," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " TEXT," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " INTEGER," +
+                    LoyaltyCardDbIds.CARD_ID + " TEXT not null," +
+                    LoyaltyCardDbIds.BARCODE_ID + " TEXT," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " TEXT," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " TEXT not null," +
+                    LoyaltyCardDbIds.STAR_STATUS + " INTEGER DEFAULT '0'," +
+                    LoyaltyCardDbIds.LAST_USED + " INTEGER DEFAULT '0', " +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " INTEGER DEFAULT '" + DEFAULT_ZOOM_LEVEL + "', " +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " INTEGER DEFAULT '" + DEFAULT_ZOOM_LEVEL_WIDTH + "', " +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS + " INTEGER DEFAULT '0' )");
+
+            // Insert all cards into temp table
+            db.execSQL("INSERT INTO tmp (" +
+                    LoyaltyCardDbIds.ID + " ," +
+                    LoyaltyCardDbIds.STORE + " ," +
+                    LoyaltyCardDbIds.NOTE + " ," +
+                    LoyaltyCardDbIds.VALID_FROM + " , " +
+                    LoyaltyCardDbIds.EXPIRY + " ," +
+                    LoyaltyCardDbIds.BALANCE + " ," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " ," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " ," +
+                    LoyaltyCardDbIds.CARD_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " ," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " ," +
+                    LoyaltyCardDbIds.STAR_STATUS + " ," +
+                    LoyaltyCardDbIds.LAST_USED + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " ," +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS + ")" +
+                    " SELECT " +
+                    LoyaltyCardDbIds.ID + " ," +
+                    LoyaltyCardDbIds.STORE + " ," +
+                    LoyaltyCardDbIds.NOTE + " ," +
+                    LoyaltyCardDbIds.VALID_FROM + " ," +
+                    LoyaltyCardDbIds.EXPIRY + " ," +
+                    LoyaltyCardDbIds.BALANCE + " ," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " ," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " ," +
+                    LoyaltyCardDbIds.CARD_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " ," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " ," +
+                    LoyaltyCardDbIds.STAR_STATUS + " ," +
+                    LoyaltyCardDbIds.LAST_USED + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " ," +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS +
+                    " FROM " + LoyaltyCardDbIds.TABLE);
+
+            // Drop old table
+            db.execSQL("DROP TABLE " + LoyaltyCardDbIds.TABLE);
+
+            // Create table again
+            db.execSQL("CREATE TABLE " + LoyaltyCardDbIds.TABLE + "(" +
+                    LoyaltyCardDbIds.ID + " INTEGER primary key autoincrement," +
+                    LoyaltyCardDbIds.STORE + " TEXT not null," +
+                    LoyaltyCardDbIds.NOTE + " TEXT not null," +
+                    LoyaltyCardDbIds.VALID_FROM + " INTEGER," +
+                    LoyaltyCardDbIds.EXPIRY + " INTEGER," +
+                    LoyaltyCardDbIds.BALANCE + " TEXT not null DEFAULT '0'," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " TEXT," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " INTEGER," +
+                    LoyaltyCardDbIds.CARD_ID + " TEXT not null," +
+                    LoyaltyCardDbIds.BARCODE_ID + " TEXT," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " TEXT," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " TEXT not null," +
+                    LoyaltyCardDbIds.STAR_STATUS + " INTEGER DEFAULT '0'," +
+                    LoyaltyCardDbIds.LAST_USED + " INTEGER DEFAULT '0', " +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " INTEGER DEFAULT '" + DEFAULT_ZOOM_LEVEL + "', " +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " INTEGER DEFAULT '" + DEFAULT_ZOOM_LEVEL_WIDTH + "', " +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS + " INTEGER DEFAULT '0' )");
+
+            // Insert all temp cards into newly created table
+            db.execSQL("INSERT INTO " + LoyaltyCardDbIds.TABLE + "(" +
+                    LoyaltyCardDbIds.ID + " ," +
+                    LoyaltyCardDbIds.STORE + " ," +
+                    LoyaltyCardDbIds.NOTE + " ," +
+                    LoyaltyCardDbIds.VALID_FROM + " , " +
+                    LoyaltyCardDbIds.EXPIRY + " ," +
+                    LoyaltyCardDbIds.BALANCE + " ," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " ," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " ," +
+                    LoyaltyCardDbIds.CARD_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " ," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " ," +
+                    LoyaltyCardDbIds.STAR_STATUS + " ," +
+                    LoyaltyCardDbIds.LAST_USED + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " ," +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS + ")" +
+                    " SELECT " +
+                    LoyaltyCardDbIds.ID + " ," +
+                    LoyaltyCardDbIds.STORE + " ," +
+                    LoyaltyCardDbIds.NOTE + " ," +
+                    LoyaltyCardDbIds.VALID_FROM + " ," +
+                    LoyaltyCardDbIds.EXPIRY + " ," +
+                    LoyaltyCardDbIds.BALANCE + " ," +
+                    LoyaltyCardDbIds.BALANCE_TYPE + " ," +
+                    LoyaltyCardDbIds.HEADER_COLOR + " ," +
+                    LoyaltyCardDbIds.CARD_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_ID + " ," +
+                    LoyaltyCardDbIds.BARCODE_TYPE + " ," +
+                    LoyaltyCardDbIds.BARCODE_ENCODING + " ," +
+                    LoyaltyCardDbIds.STAR_STATUS + " ," +
+                    LoyaltyCardDbIds.LAST_USED + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL + " ," +
+                    LoyaltyCardDbIds.ZOOM_LEVEL_WIDTH + " ," +
+                    LoyaltyCardDbIds.ARCHIVE_STATUS +
+                    " FROM tmp");
+
+            // Drop tmp table
+            db.execSQL("DROP TABLE tmp");
+
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        }
+
     }
 
     public static Set<String> imageFiles(Context context, final SQLiteDatabase database) {
@@ -396,7 +556,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static long insertLoyaltyCard(
             final SQLiteDatabase database, final String store, final String note, final Date validFrom,
             final Date expiry, final BigDecimal balance, final Currency balanceType, final String cardId,
-            final String barcodeId, final CatimaBarcode barcodeType, final Integer headerColor,
+            final String barcodeId, final CatimaBarcode barcodeType, final @NonNull Charset barcodeEncoding,
+            final Integer headerColor,
             final int starStatus, final Long lastUsed, final int archiveStatus) {
         database.beginTransaction();
 
@@ -411,6 +572,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(LoyaltyCardDbIds.CARD_ID, cardId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_ID, barcodeId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_TYPE, barcodeType != null ? barcodeType.name() : null);
+        contentValues.put(LoyaltyCardDbIds.BARCODE_ENCODING, barcodeEncoding.name());
         contentValues.put(LoyaltyCardDbIds.HEADER_COLOR, headerColor);
         contentValues.put(LoyaltyCardDbIds.STAR_STATUS, starStatus);
         contentValues.put(LoyaltyCardDbIds.LAST_USED, lastUsed != null ? lastUsed : Utils.getUnixTime());
@@ -430,7 +592,8 @@ public class DBHelper extends SQLiteOpenHelper {
             final SQLiteDatabase database, final int id, final String store, final String note,
             final Date validFrom, final Date expiry, final BigDecimal balance,
             final Currency balanceType, final String cardId, final String barcodeId,
-            final CatimaBarcode barcodeType, final Integer headerColor, final int starStatus,
+            final CatimaBarcode barcodeType, final @NonNull Charset barcodeEncoding,
+            final Integer headerColor, final int starStatus,
             final Long lastUsed, final int archiveStatus) {
         database.beginTransaction();
 
@@ -446,6 +609,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(LoyaltyCardDbIds.CARD_ID, cardId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_ID, barcodeId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_TYPE, barcodeType != null ? barcodeType.name() : null);
+        contentValues.put(LoyaltyCardDbIds.BARCODE_ENCODING, barcodeEncoding.name());
         contentValues.put(LoyaltyCardDbIds.HEADER_COLOR, headerColor);
         contentValues.put(LoyaltyCardDbIds.STAR_STATUS, starStatus);
         contentValues.put(LoyaltyCardDbIds.LAST_USED, lastUsed != null ? lastUsed : Utils.getUnixTime());
@@ -465,7 +629,8 @@ public class DBHelper extends SQLiteOpenHelper {
             SQLiteDatabase database, final int id, final String store, final String note,
             final Date validFrom, final Date expiry, final BigDecimal balance,
             final Currency balanceType, final String cardId, final String barcodeId,
-            final CatimaBarcode barcodeType, final Integer headerColor, final int starStatus,
+            final CatimaBarcode barcodeType, final @NonNull Charset barcodeEncoding,
+            final Integer headerColor, final int starStatus,
             final Long lastUsed, final int archiveStatus) {
         database.beginTransaction();
 
@@ -480,6 +645,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(LoyaltyCardDbIds.CARD_ID, cardId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_ID, barcodeId);
         contentValues.put(LoyaltyCardDbIds.BARCODE_TYPE, barcodeType != null ? barcodeType.name() : null);
+        contentValues.put(LoyaltyCardDbIds.BARCODE_ENCODING, barcodeEncoding.name());
         contentValues.put(LoyaltyCardDbIds.HEADER_COLOR, headerColor);
         contentValues.put(LoyaltyCardDbIds.STAR_STATUS, starStatus);
         contentValues.put(LoyaltyCardDbIds.LAST_USED, lastUsed != null ? lastUsed : Utils.getUnixTime());

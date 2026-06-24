@@ -189,15 +189,6 @@
     <string name="settings_system_locale">Sistema</string>
     <string name="selectColor">Selecionar cor</string>
     <string name="setIcon">Definir miniatura</string>
-    <string name="settings_theme_color">Cor do tema</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_pink_theme">Rosa</string>
-    <string name="settings_magenta_theme">Magenta</string>
-    <string name="settings_violet_theme">Violeta</string>
-    <string name="settings_blue_theme">Azul</string>
-    <string name="settings_sky_blue_theme">Azul celeste</string>
-    <string name="settings_green_theme">Verde</string>
-    <string name="settings_brown_theme">Marrom</string>
     <string name="app_contributors">Só foi possível graças a: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="sort">Ordenar</string>
     <string name="showMoreInfo">Mostrar informações</string>
@@ -303,5 +294,21 @@
     <string name="card_list_widget_name">Lista de cartões</string>
     <string name="card_list_widget_empty">Depois que você adicionar alguns cartões de fidelidade no Catima, eles aparecerão aqui. Se você tiver cartões, verifique se eles não estão todos arquivados.</string>
     <string name="cardWithNumber">Cartão <xliff:g>%d</xliff:g></string>
-    <string name="cardWithNumberAndLocale">Cartão <xliff:g>%d</xliff:g> (%s)</string>
+    <string name="cardWithNumberAndLocale">Cartão <xliff:g>%d</xliff:g> (<xliff:g>%s</xliff:g>)</string>
+    <string name="pleaseDoNotRotateTheDevice">Por favor, não gire o dispositivo, pois cancelará a ação</string>
+    <string name="acra_catima_has_crashed">Lamentamos, mas o <xliff:g id="app_name">%s</xliff:g> travou. Ajude-nos a corrigir este problema a enviar um relatório de erro.</string>
+    <string name="acra_explain_crash">Se possível, acrescente detalhes sobre o que fazia aqui:</string>
+    <string name="acra_crash_email_subject">Relatório de falha em <xliff:g id="app_name">%s</xliff:g></string>
+    <string name="pref_enable_acra">Solicitar o envio de relatórios de falhas</string>
+    <string name="pref_enable_acra_summary">Quando ativado, relatar uma falha será solicitado quando isto ocorrer. Os relatórios de falhas nunca são enviados automaticamente.</string>
+    <string name="copy_value">Copiar valor</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="nothing_to_copy">Nenhum valor encontrado</string>
+    <string name="barcodeEncoding">codificação de código de barras</string>
+    <string name="back">Voltar</string>
+    <string name="settings_disable_nfc_while_viewing_card">Pausar NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Pausa NFC para evitar que pagamentos de NFC sejam acionados enquanto visualiza um cartão</string>
+    <string name="nfc_blocked_while_viewing_card">NFC está pausado</string>
+    <string name="change_settings">Alterar configurações</string>
+    <string name="nfc_block_system_error">Erro ao pausar o NFC</string>
 </resources>

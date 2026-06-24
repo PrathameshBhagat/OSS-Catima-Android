@@ -24,7 +24,7 @@ permissions:
   security-events: none
   statuses: none
 env:
-  JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
+  JAVA_HOME: /usr/lib/jvm/java-25-openjdk-amd64
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,30 +32,28 @@ jobs:
       matrix:
         flavor: [Foss, Gplay]
     steps:
-      - uses: actions/checkout@v5
-      - name: Fail on bad translations
-        run: if grep -ri "&lt;xliff" app/src/main/res/values*/strings.xml; then echo "Invalidly escaped translations found"; exit 1; fi
-      - uses: gradle/actions/wrapper-validation@v4
-      - name: set up OpenJDK 21
+      - uses: actions/checkout@v6.0.3
+      - uses: gradle/actions/wrapper-validation@v6.1.1
+      - name: set up OpenJDK 25
         run: |
           sudo apt-get update
-          sudo apt-get install -y openjdk-21-jdk-headless
+          sudo apt-get install -y openjdk-25-jdk-headless
           sudo update-alternatives --auto java
       - name: Build
         run: ./gradlew assemble${{ matrix.flavor }}Release
       - name: Check lint
         run: ./gradlew lint${{ matrix.flavor }}Release
       - name: Run unit tests
-        run: timeout 5m ./gradlew test${{ matrix.flavor }}ReleaseUnitTest || { ./gradlew --stop && timeout 5m ./gradlew test${{ matrix.flavor }}ReleaseUnitTest; }
+        run: timeout 5m ./gradlew test${{ matrix.flavor }}DebugUnitTest || { ./gradlew --stop && timeout 5m ./gradlew test${{ matrix.flavor }}DebugUnitTest; }
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Run instrumented tests (API 21)
+      - name: Run instrumented tests (API 23)
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 21
+          api-level: 23
           arch: x86_64
           script: ./gradlew connected${{ matrix.flavor }}DebugAndroidTest
       - name: Run instrumented tests (API 35)
@@ -66,7 +64,7 @@ jobs:
           script: ./gradlew connected${{ matrix.flavor }}DebugAndroidTest
       - name: Archive test results
         if: always()
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: test-results-flavor${{ matrix.flavor }}
           path: app/build/reports

@@ -16,7 +16,7 @@
     <string name="about">정보</string>
     <string name="exporting">내보내는 중…</string>
     <string name="importing">가져오는 중…</string>
-    <string name="importExportHelp">데이터를 백업하면 다른 장치로 이동할 수 있습니다.</string>
+    <string name="importExportHelp">데이터를 백업하면 다른 장치로 이동할 수 있습니다</string>
     <string name="exportName">내보내기</string>
     <string name="importExport">가져오기/내보내기</string>
     <string name="cardShortcut">카드 바로 가기</string>
@@ -41,7 +41,7 @@
     <string name="noGiftCards">+ 더하기 버튼을 클릭하여 카드를 추가하거나 ⋮ 메뉴에서 가져옵니다.</string>
     <string name="action_add">추가</string>
     <string name="action_search">검색</string>
-    <string name="importOptionFilesystemExplanation">파일 시스템에서 파일을 선택합니다.</string>
+    <string name="importOptionFilesystemExplanation">파일 시스템에서 파일을 선택합니다</string>
     <string name="importOptionFilesystemTitle">파일 시스템에서 가져오기</string>
     <string name="exportFailed">내보내기를 수행할 수 없습니다</string>
     <string name="exportFailedTitle">내보내기 실패</string>
@@ -51,8 +51,8 @@
     <string name="importSuccessfulTitle">가져오기 완료</string>
     <string name="storeName">이름</string>
     <string name="thumbnailDescription">썸네일</string>
-    <string name="failedParsingImportUriError">가져올 URI를 분석할 수 없음</string>
-    <string name="noCardExistsError">해당 카드를 찾을 수 없음</string>
+    <string name="failedParsingImportUriError">가져올 URI를 분석할 수 없습니다</string>
+    <string name="noCardExistsError">해당 카드를 찾을 수 없습니다</string>
     <string name="moveUp">위로 이동</string>
     <string name="leaveWithoutSaveTitle">종료</string>
     <string name="moveDown">아래로 이동</string>
@@ -63,7 +63,7 @@
     <plurals name="deleteCardsTitle">
         <item quantity="other">카드 <xliff:g>%d</xliff:g> 장 제거</item>
     </plurals>
-    <string name="noGiftCardsGroup">카드를 몇 장 만든 다음 여기에서 그룹에 할당합니다.</string>
+    <string name="noGiftCardsGroup">카드를 몇 장 만든 다음 이곳에서 그룹에 할당합니다</string>
     <string name="noCardsMessage">먼저 카드 추가</string>
     <string name="leaveWithoutSaveConfirmation">저장하지 않고 나가시겠습니까\?</string>
     <string name="intent_import_card_from_url_share_text">카드를 공유하고 싶습니다</string>
@@ -82,18 +82,12 @@
     <string name="takePhoto">사진 찍기</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
-    <string name="failedGeneratingShareURL">공유 가능한 URL을 생성할 수 없습니다. 이를 개발자에게 알려 주십시오.</string>
+    <string name="failedGeneratingShareURL">공유 가능한 URL을 생성할 수 없습니다</string>
     <string name="turn_flashlight_off">손전등 끄기</string>
     <string name="settings_locale">언어</string>
     <string name="settings_system_locale">시스템</string>
     <string name="selectColor">색상 선택</string>
-    <string name="settings_theme_color">테마 색상</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_pink_theme">핑크색</string>
-    <string name="settings_magenta_theme">자홍색</string>
-    <string name="settings_violet_theme">보라색</string>
-    <string name="settings_blue_theme">파란색</string>
-    <string name="app_contributors">기여자: <xliff:g id="app_contributors">%s</xliff:g></string>
+    <string name="app_contributors">제작 지원: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="showMoreInfo">정보 보기</string>
     <string name="updateBalance">잔액 업데이트</string>
     <string name="failedToRetrieveImageFile">이미지 파일을 검색하지 못했습니다</string>
@@ -153,14 +147,14 @@
     </plurals>
     <string name="app_copyright_fmt" tools:ignore="PluralsCandidate">저작권 © 2019–<xliff:g>%d</xliff:g> Sylvia van Os 및 기여자</string>
     <string name="noCameraPermissionDirectToSystemSetting">바코드를 스캔하려면 Catima가 카메라에 접근해야 합니다. 권한 설정을 변경하려면 여기를 탭하세요.</string>
-    <string name="exportOptionExplanation">데이터는 선택한 위치에 기록됩니다.</string>
+    <string name="exportOptionExplanation">데이터는 선택한 위치에 기록됩니다</string>
     <string name="app_license">GPL v3+로 라이선스된 카피레프트 자유 소프트웨어</string>
-    <string name="failedOpeningFileManager">먼저 파일 관리자를 설치하십시오.</string>
+    <string name="failedOpeningFileManager">파일 관리자를 열 수 없습니다</string>
     <string name="importSuccessful">데이터 들여옴</string>
     <string name="group_name_is_empty">그룹 이름은 필수임</string>
     <string name="chooseExpiryDate">만료일 선택</string>
     <string name="settings_oled_dark">어두운 테마를 위한 검정색 배경</string>
-    <string name="noGroups">+ 더하기 버튼을 클릭하여 분류할 그룹을 추가합니다.</string>
+    <string name="noGroups">+ 더하기 버튼을 눌러 카테고리 그룹 추가</string>
     <string name="deleteConfirmationGroup">그룹을 삭제하시겠습니까\?</string>
     <string name="errorReadingImage">이미지를 읽을 수 없습니다</string>
     <string name="expiryStateSentence">만료: <xliff:g>%s</xliff:g></string>
@@ -198,7 +192,7 @@
     <string name="barcodeImageDescriptionWithType">이미지 <xliff:g>%s</xliff:g> 바코드</string>
     <string name="photos">사진</string>
     <string name="storageReadPermissionRequired">이 작업에 필요한 저장소를 읽을 수 있는 권한…</string>
-    <string name="app_libraries">자유 타사 라이브러리: <xliff:g id="app_libraries_list">%s</xliff:g></string>
+    <string name="app_libraries">서드파티 라이브러리: <xliff:g id="app_libraries_list">%s</xliff:g></string>
     <string name="cameraPermissionRequired">이 작업에 필요한 카메라 액세스 권한…</string>
     <string name="cameraPermissionDeniedTitle">카메라 접근 실패</string>
     <string name="importOptionFilesystemButton">파일 시스템에서</string>
@@ -216,21 +210,14 @@
     <string name="app_loyalty_card_keychain">로열티 카드 키체인</string>
     <string name="privacy_policy">개인 정보 정책</string>
     <string name="importCatima">Catima에서 가져오기</string>
-    <string name="importCatimaMessage">가져올 Catima에서 <i>catima.zip</i> 내보내기를 선택합니다.
-\n먼저 내보내기를 눌러 다른 Catima 앱의 가져오기/내보내기 메뉴에서 생성합니다.</string>
+    <string name="importCatimaMessage">가져올 Catima에서 <i>catima.zip</i> 내보내기를 선택합니다. \n먼저 내보내기를 눌러 다른 Catima 앱의 가져오기/내보내기 메뉴에서 생성합니다.</string>
     <string name="importFidme">FidMe에서 가져오기</string>
-    <string name="importFidmeMessage">가져올 FidMe에서 <i>fidme-export-request-xxxxxx.zip</i> 내보내기를 선택하고 나중에 바코드 유형을 수동으로 선택합니다.
-\n데이터 보호를 선택한 다음 먼저 내 데이터 추출을 눌러 FidMe 프로필에서 생성합니다.</string>
-    <string name="importLoyaltyCardKeychainMessage">가져올 포인트 카드 키체인에서 <i>LoyaltyCardKeychain.csv</i> 내보내기를 선택합니다.
-\n먼저 내보내기를 눌러 로열티 카드 키체인의 가져오기/내보내기 메뉴에서 만드십시오.</string>
+    <string name="importFidmeMessage">가져올 FidMe에서 <i>fidme-export-request-xxxxxx.zip</i> 내보내기를 선택하고 나중에 바코드 유형을 수동으로 선택합니다. \n데이터 보호를 선택한 다음 먼저 내 데이터 추출을 눌러 FidMe 프로필에서 생성합니다.</string>
+    <string name="importLoyaltyCardKeychainMessage">가져올 포인트 카드 키체인에서 <i>LoyaltyCardKeychain.csv</i> 내보내기를 선택합니다. \n먼저 내보내기를 눌러 로열티 카드 키체인의 가져오기/내보내기 메뉴에서 만드십시오.</string>
     <string name="setBarcodeId">바코드 값 설정</string>
     <string name="importVoucherVault">Voucher Vault에서 가져오기</string>
-    <string name="importVoucherVaultMessage">가져올 Voucher Vault에서 <i>vouchervault.json</i> 내보내기를 선택합니다.
-\n먼저 바우처 금고에서 내보내기를 눌러 생성하세요.</string>
+    <string name="importVoucherVaultMessage">가져올 Voucher Vault에서 <i>vouchervault.json</i> 내보내기를 선택합니다. \n먼저 바우처 금고에서 내보내기를 눌러 생성하세요.</string>
     <string name="sameAsCardId">아이디와 동일</string>
-    <string name="settings_sky_blue_theme">하늘색</string>
-    <string name="settings_green_theme">초록색</string>
-    <string name="settings_brown_theme">갈색</string>
     <string name="previousCard">이전의</string>
     <string name="nextCard">다음</string>
     <string name="failedToOpenUrl">먼저 웹 브라우저를 설치하십시오</string>
@@ -275,7 +262,7 @@
     <string name="useFrontImage">전면 이미지 사용</string>
     <string name="useBackImage">후면 이미지 사용</string>
     <string name="addFromPkpass">Passbook 파일 선택하기 (.pkpass)</string>
-    <string name="generic_error_please_retry">죄송합니다, 문제가 발생했습니다. 다시 시도해 주세요...</string>
+    <string name="generic_error_please_retry">오류가 발생했습니다</string>
     <string name="settings_use_volume_keys_navigation">볼륨 버튼을 사용하여 카드 전환하기</string>
     <string name="unsupportedFile">이 파일은 지원되지 않습니다</string>
     <string name="settings_use_volume_keys_navigation_summary">볼륨 버튼을 사용하여 표시되는 카드를 변경합니다</string>
@@ -293,4 +280,24 @@
     <string name="sort_by_valid_from">유효 기간</string>
     <string name="width">너비</string>
     <string name="setBarcodeWidth">바코드 너비를 설정하세요</string>
+    <string name="card_list_widget_name">카드 목록</string>
+    <string name="settings_disable_nfc_while_viewing_card">NFC 일시 중지</string>
+    <string name="card_list_widget_empty">Catima에 멤버십 카드를 추가하면 여기에 표시됩니다. 카드가 있는데도 보이지 않는다면 모두 보관 처리되어 있지 않은지 확인해 보세요.</string>
+    <string name="pleaseDoNotRotateTheDevice">기기를 회전하지 마세요. 진행 중인 작업이 취소될 수 있습니다</string>
+    <string name="acra_catima_has_crashed">죄송합니다. <xliff:g id="app_name">%s</xliff:g> 앱이 종료되었습니다. 문제 해결을 위해 오류 리포트를 보내주세요.</string>
+    <string name="acra_crash_email_subject"><xliff:g id="app_name">%s</xliff:g> 크래시 리포트</string>
+    <string name="pref_enable_acra">오류 리포트 전송 요청</string>
+    <string name="pref_enable_acra_summary">이 기능을 켜면 오류가 발생했을 때 보고서 전송 여부를 확인합니다. 오류 리포트는 절대 자동으로 전송되지 않습니다.</string>
+    <string name="copy_value">값 복사</string>
+    <string name="copied_to_clipboard">클립보드에 복사됨</string>
+    <string name="nothing_to_copy">데이터를 찾을 수 없습니다</string>
+    <string name="back">돌아가기</string>
+    <string name="nfc_blocked_while_viewing_card">NFC 일시 중지됨</string>
+    <string name="change_settings">설정 변경</string>
+    <string name="nfc_block_system_error">NFC 일시 중지에 실패</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">카드를 보는 동안 NFC 결제가 실행되는 것을 방지하기 위해 NFC 기능을 일시 중지합니다</string>
+    <string name="cardWithNumber"><xliff:g>%d</xliff:g>번 카드</string>
+    <string name="cardWithNumberAndLocale"><xliff:g>%d</xliff:g> 번 카드 (<xliff:g>%s</xliff:g>)</string>
+    <string name="acra_explain_crash">가능하다면, 오류가 발생했을 때 어떤 작업을 하고 계셨는지 자세히 적어주세요:</string>
+    <string name="barcodeEncoding">바코드 인코딩</string>
 </resources>

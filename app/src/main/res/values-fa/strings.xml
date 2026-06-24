@@ -3,8 +3,8 @@
     <string name="app_name">کاتیما</string>
     <string name="action_search">جستجو</string>
     <string name="action_add">افزودن</string>
-    <string name="noGiftCards">برای افزودن کارت دکمه + پلاس را بزنید, یا از ⋮ منو ایمپورت کنید.</string>
-    <string name="noGiftCardsGroup">تعدادی کارت ایجاد کنید، و سپس آنها را اینجا به گروه بیافزایید.</string>
+    <string name="noGiftCards">برای افزودن کارت، روی دکمه + کلیک کنید یا از منوی ⋮ کارت‌ها را وارد کنید.</string>
+    <string name="noGiftCardsGroup">چند کارت ایجاد کنید و سپس آن‌ها را در اینجا به این گروه اختصاص دهید.</string>
     <string name="noMatchingGiftCards">بدون نتیجه. سعی کنید جستجویتان را تغییر دهید.</string>
     <string name="storeName">نام</string>
     <string name="note">یادداشت</string>
@@ -36,7 +36,7 @@
     <string name="scanCardBarcode">اسکن بارکد</string>
     <string name="cardShortcut">میان‌بر کارت</string>
     <string name="noCardsMessage">ابتدا یک کارت بیافزایید</string>
-    <string name="noCardExistsError">کارت پیدا نشد</string>
+    <string name="noCardExistsError">آن کارت پیدا نشد</string>
     <string name="importFailedTitle">ایمپورت ناموفق بود</string>
     <string name="importFailed">نمیتوان ایمپورت کرد</string>
     <string name="exportSuccessfulTitle">خروجی گرفته شده</string>
@@ -68,7 +68,7 @@
     <string name="permissionReadCardsDescription">کارت های کاتیما و تمام جزئیاتشان از جمله یادداشت‌ها و عکس‌ها را بخوانید</string>
     <string name="cameraPermissionDeniedTitle">نمیتوان به دوربین دسترسی پیدا کرد</string>
     <string name="noCameraPermissionDirectToSystemSetting">برای اسکن بارکد ها، کاتیما نیاز دارد به دوربین شما دسترسی داشته باشد. اینجا بزنید تا تنظیمات دسترسی خود را تغییر دهید.</string>
-    <string name="importExport">ایمپورت/خروجی گرفتن</string>
+    <string name="importExport">واردات/صادرات</string>
     <string name="settings_category_title_privacy">حریم شخصی</string>
     <string name="settings_category_title_general">عمومی</string>
     <string name="settings_category_title_cards">نمایش کارت</string>
@@ -117,8 +117,8 @@
     <string name="importCatimaMessage">فایل <i>catima.zip</i> خروجی خود را از Catima برای وارد کردن انتخاب کنید.\nآن را از منوی وارد/صادر کردن در یک اپلیکیشن دیگر Catima با فشردن دکمه صادرکردن ابتدا ایجاد کنید.</string>
     <string name="unsupportedBarcodeType">این نوع بارکد هنوز نمی‌تواند نمایش داده شود. ممکن است در نسخه آینده برنامه پشتیبانی شود.</string>
     <plurals name="balancePoints">
-        <item quantity="one"><xliff:g>%s</xliff:g> امتیاز</item>
-        <item quantity="other"><xliff:g>%s</xliff:g> امتیاز</item>
+        <item quantity="one"><xliff:g>%s</xliff:g> نقطه</item>
+        <item quantity="other"><xliff:g>%s</xliff:g> نقطه</item>
     </plurals>
     <string name="importFidmeMessage">فایل خروجی <i>fidme-export-request-xxxxxx.zip</i> خود را از FidMe برای وارد کردن انتخاب کنید، و سپس نوع بارکدها را به صورت دستی مشخص کنید.\nآن را از پروفایل FidMe خود با انتخاب گزینه حفاظت از داده و سپس فشار دادن گزینه استخراج داده من ابتدا ایجاد کنید.</string>
     <string name="leaveWithoutSaveTitle">خروج</string>
@@ -180,7 +180,6 @@
     <string name="height">ارتفاع</string>
     <string name="add_manually_warning_message">برای برخی از فروشگاه‌ها، مقدار بارکد با عدد نوشته شده روی کارت متفاوت است. به همین دلیل، وارد کردن دستی بارکد ممکن است همیشه کار نکند. اکیداً توصیه می‌شود که به جای آن، بارکد را با دوربین خود اسکن کنید. آیا هنوز می‌خواهید ادامه دهید؟</string>
     <string name="generic_error_please_retry">ببخشید، مشکلی پیش آمده، لطفا دوباره امتحان کنید...</string>
-    <string name="settings_magenta_theme">سرخابی</string>
     <string name="welcome">یه کتیما خوش آمدید</string>
     <string name="chooseValidFromDate">مقداری درست از تاریخ برگزینید</string>
     <string name="intent_import_card_from_url_share_multiple_text">می‌خواهم چند کارت به شما بدهم</string>
@@ -198,15 +197,8 @@
     <string name="settings_oled_dark">پس‌زمینه‌ی یک‌دست سیاه برای حالت تاریک</string>
     <string name="settings_oled_dark_summary">استفاده‌ی باتری را برای نمایشگرهای OLED کاهش می‌دهد</string>
     <string name="setIcon">قالب پیش‌نمایه را بگمارید</string>
-    <string name="settings_theme_color">رنگ زمینه</string>
-    <string name="settings_catima_theme">کتیما</string>
     <string name="settings_system_locale">سیستم</string>
     <string name="selectColor">رنگ را برگزینید</string>
-    <string name="settings_violet_theme">بنفش</string>
-    <string name="settings_blue_theme">آبی</string>
-    <string name="settings_sky_blue_theme">آبی آسمانی</string>
-    <string name="settings_green_theme">سبز</string>
-    <string name="settings_brown_theme">قهوه‌ای</string>
     <string name="app_contributors">با کمک او ممکن شد: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="sort">مرتب‌کردن</string>
     <string name="showMoreInfo">نمایش اطلاعات</string>
@@ -220,7 +212,6 @@
     <string name="passwordRequired">لطفا گذرواژه را وارد کنید</string>
     <string name="previousCard">پیشین</string>
     <string name="turn_flashlight_off">چراغ‌قوه را خاموش کنید</string>
-    <string name="settings_pink_theme">صورتی</string>
     <string name="updateBalance">به‌روزرسانی موجودی</string>
     <string name="barcodeLongPressMessage">تنها عکس می‌تواند در گالری برنامه باز شود</string>
     <string name="sort_by_name">نام</string>
@@ -294,4 +285,5 @@
     <string name="spend">خرج کردن</string>
     <string name="addFromPkpass">یک فایل دفترچه حساب (.pkpass) انتخاب کنید</string>
     <string name="noCameraFoundGuideText">به نظر نمی‌رسد دستگاه شما دوربین داشته باشد. اگر دارد، دستگاه را مجدداً راه‌اندازی کنید. در غیر این صورت، از دکمه گزینه‌های بیشتر در زیر برای افزودن بارکد به روش دیگری استفاده کنید.</string>
+    <string name="card_list_widget_empty">بعد از اینکه چند کارت وفاداری در کاتیما اضافه کردید، آنها اینجا ظاهر می‌شوند. اگر کارت دارید، مطمئن شوید که همه آنها بایگانی نشده‌اند.</string>
 </resources>

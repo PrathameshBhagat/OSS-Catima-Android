@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
     <string name="action_search">بحث</string>
-    <string name="action_add">أضف</string>
-    <string name="noGiftCards">اضغط على زر الإضافة + لإضافة بطاقة، أو استورد من القائمة خلال ⋮</string>
-    <string name="noMatchingGiftCards">لا نتائج. حاول تغيير كلمات البحث.</string>
-    <string name="storeName">اسم</string>
-    <string name="note">مذكرة</string>
+    <string name="action_add">إضافة</string>
+    <string name="noGiftCards">انقر على زر + لإضافة بطاقة، أو استوردها من قائمة ⋮</string>
+    <string name="noMatchingGiftCards">لا توجد نتائج. حاول تغيير بحثك.</string>
+    <string name="storeName">الاسم</string>
+    <string name="note">ملاحظة</string>
     <string name="cardId">معرّف البطاقة</string>
     <string name="barcodeType">نوع الباركود</string>
     <string name="noBarcode">لا يوجد باركود</string>
-    <string name="star">أضف الى المفضلة</string>
-    <string name="unstar">حذف من المفضلة</string>
+    <string name="star">إضافة إلى المفضلة</string>
+    <string name="unstar">إزالة من المفضلة</string>
     <string name="cancel">إلغاء</string>
     <string name="save">حفظ</string>
     <string name="edit">تعديل</string>
-    <string name="delete">مسح</string>
+    <string name="delete">حذف</string>
     <string name="confirm">تأكيد</string>
-    <string name="deleteConfirmation">مسح هذة البطاقة نهائيا؟</string>
-    <string name="ok">حسنا</string>
-    <string name="share">شارك</string>
-    <string name="sendLabel">ارسل…</string>
-    <string name="editCardTitle">عدل البطاقة</string>
-    <string name="addCardTitle">اضف بطاقة</string>
-    <string name="scanCardBarcode">مسح باركود</string>
+    <string name="deleteConfirmation">حذف هذه البطاقة نهائيًّا؟</string>
+    <string name="ok">حسنًا</string>
+    <string name="share">مشاركة</string>
+    <string name="sendLabel">إرسال…</string>
+    <string name="editCardTitle">تعديل البطاقة</string>
+    <string name="addCardTitle">إضافة بطاقة</string>
+    <string name="scanCardBarcode">مسح الباركود</string>
     <string name="cardShortcut">اختصار البطاقة</string>
-    <string name="noCardsMessage">اضف بطاقة أولا</string>
+    <string name="noCardsMessage">أضف بطاقة أولًا</string>
     <string name="barcodeImageDescriptionWithType">صورة <xliff:g>%s</xliff:g> الباركود</string>
-    <string name="noCardExistsError">لا يمكن العثور على هذه البطاقة</string>
-    <string name="failedParsingImportUriError">لا يمكن تحليل الرابط المستورد</string>
+    <string name="noCardExistsError">لم يتمّ العثور على تلك البطاقة</string>
+    <string name="failedParsingImportUriError">لا يمكن تحليل عنوان URL المستورد</string>
     <string name="importExport">استيراد/تصدير</string>
-    <string name="importExportHelp">انشاء نسخة احتياطية من بياناتك يسمح بنقلها إلى جهاز آخر.</string>
-    <string name="importFailed">تعذر إجراء الاستيراد</string>
-    <string name="exportSuccessfulTitle">متصدر</string>
+    <string name="importExportHelp">تتيح لك عملية النسخ الاحتياطي لبياناتك نقلها إلى جهاز آخر</string>
+    <string name="importFailed">تعذّر إجراء عملية الاستيراد</string>
+    <string name="exportSuccessfulTitle">تمّ التصدير</string>
     <string name="exportFailedTitle">فشل التصدير</string>
-    <string name="exportFailed">لا يمكن عمل التصدير</string>
-    <string name="exportOptionExplanation">ستتم كتابة البيانات في الموقع الذي تختاره.</string>
+    <string name="exportFailed">تعذّر إجراء عملية التصدير</string>
+    <string name="exportOptionExplanation">ستكون البيانات مكتوبة في المسار الذي تختاره</string>
     <string name="importOptionFilesystemButton">من نظام الملفات</string>
     <string name="about">حول</string>
     <string name="app_copyright_old">بناء على Loyalty Card Keychain
@@ -53,7 +53,7 @@
     <string name="exportSuccessful">تم تصدير البيانات</string>
     <string name="enter_group_name">أدخل اسم المجموعة</string>
     <string name="group_edit">تعديل المجموعة</string>
-    <string name="noGroups">اضغط زر + لإضافة مجموعات للتصنيف.</string>
+    <string name="noGroups">اضغط زر + لإضافة مجموعات للتصنيف</string>
     <string name="noGroupCards">هذه المجموعة فارغة</string>
     <string name="group_name_already_in_use">اسم المجموعة قيد الاستخدام بالفعل</string>
     <string name="group_name_is_empty">لا يمكن أن يكون اسم المجموعة فارغًا</string>
@@ -71,11 +71,11 @@
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="accept">قبول</string>
     <string name="importCatima">الاستيراد من Catima</string>
-    <string name="importCatimaMessage">حدّد ملفك <i>catima.zip</i> تصدير من Catima للاستيراد. \nإنشئها من قائمة الاستيراد / التصدير لتطبيق Catima آخر بالضغط على تصدير هناك أولاً.</string>
+    <string name="importCatimaMessage">حدّد ملفك تصدير من Catima للاستيراد.\nإنشئها من قائمة الاستيراد / التصدير لتطبيق Catima آخر بالضغط على تصدير .</string>
     <string name="importFidme">الاستيراد من FidMe</string>
-    <string name="importFidmeMessage">حدّد ملفك <i>fidme-export-request-xxxxxx.zip</i> تصدير من FidMe للاستيراد، ثم حدد أنواع الباركود يدويًا بعد ذلك. \nإنشئها من ملف تعريف FidMe الخاص بك عن طريق اختيار حماية البيانات ثم الضغط على استخراج بياناتي أولاً.</string>
+    <string name="importFidmeMessage">حدّد للتصدير من FidMe للاستيراد، ثم حدد أنواع الباركود يدويًا بعد ذلك. \nقم بإنشاءها من ملفك التعريفي في FidMe عن طريق اختيار \"حماية البيانات\" ثم النقر على \"استخراج بياناتي\".</string>
     <string name="importVoucherVault">الاستيراد من Voucher Vault</string>
-    <string name="importVoucherVaultMessage">حدّد ملفك <i>vouchervault.json</i> تصدير من Voucher Vault للاستيراد. \nإنشئها بالضغط على تصدير في Voucher Vault أولاً.</string>
+    <string name="importVoucherVaultMessage">حدّد ملفك <i>vouchervault.json</i> تصدير من Voucher Vault للاستيراد.\nإنشئها بالضغط على تصدير في Voucher Vault.</string>
     <string name="barcodeId">قيمة الباركود</string>
     <string name="sameAsCardId">نفس بطاقة الهوية</string>
     <string name="setBarcodeId">عيّن قيمة الباركود</string>
@@ -101,14 +101,6 @@
     <string name="settings_locale">لغة</string>
     <string name="settings_system_locale">النظام</string>
     <string name="setIcon">تعيين الصورة المصغرة</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_pink_theme">زهري</string>
-    <string name="settings_magenta_theme">أرجواني</string>
-    <string name="settings_violet_theme">البنفسجي</string>
-    <string name="settings_blue_theme">أزرق</string>
-    <string name="settings_sky_blue_theme">أزرق سماوي</string>
-    <string name="settings_green_theme">أخضر</string>
-    <string name="settings_brown_theme">بني</string>
     <string name="app_contributors">أصبح ممكنًا بواسطة: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="sort">فرز</string>
     <string name="showMoreInfo">اظهر المعلومات</string>
@@ -130,21 +122,21 @@
     <string name="archived">تمت أرشفة البطاقة</string>
     <string name="unarchived">البطاقة غير مؤرشفة</string>
     <string name="failedLaunchingPhotoPicker">تعذر العثور على تطبيق معرض مدعوم</string>
-    <string name="noGiftCardsGroup">أنشئ بعض البطاقات، ثم عيّنهم لهذه المجموعة.</string>
-    <string name="deleteTitle">مسح بطاقة</string>
+    <string name="noGiftCardsGroup">أنشئ بعض البطاقات، ثم عيّنها للمجموعة هنا</string>
+    <string name="deleteTitle">حذف البطاقة</string>
     <plurals name="selectedCardCount">
-        <item quantity="zero"><xliff:g>%d</xliff:g> محدد</item>
+        <item quantity="zero"><xliff:g>%d</xliff:g> محددة</item>
         <item quantity="one"><xliff:g>%d</xliff:g> محددة</item>
-        <item quantity="two"><xliff:g>%d</xliff:g> محدد</item>
-        <item quantity="few"><xliff:g>%d</xliff:g> محدد</item>
-        <item quantity="many"><xliff:g>%d</xliff:g> محدد</item>
-        <item quantity="other"><xliff:g>%d</xliff:g> محدد</item>
+        <item quantity="two"><xliff:g>%d</xliff:g> محددتين</item>
+        <item quantity="few"><xliff:g>%d</xliff:g> محددة</item>
+        <item quantity="many"><xliff:g>%d</xliff:g> محددة</item>
+        <item quantity="other"><xliff:g>%d</xliff:g> محددة</item>
     </plurals>
-    <string name="importing">جار الاستيراد…</string>
+    <string name="importing">جارٍ الاستيراد…</string>
     <string name="exportName">تصدير</string>
     <string name="exporting">جار التصدير…</string>
-    <string name="importSuccessfulTitle">مستورد</string>
-    <string name="importFailedTitle">فشل بالاستيراد</string>
+    <string name="importSuccessfulTitle">تمّ الاستيراد</string>
+    <string name="importFailedTitle">فشل الاستيراد</string>
     <string name="sort_by_most_recently_used">الأكثر أستعمالا مؤخرا</string>
     <string name="license">رخصة</string>
     <string name="sort_by_name">اسم</string>
@@ -158,23 +150,23 @@
         <item quantity="other"><xliff:g>%1$d</xliff:g> بطاقات ( <xliff:g id="archivedCount">%2$d</xliff:g> مؤرشفة)</item>
     </plurals>
     <plurals name="deleteCardsTitle">
-        <item quantity="zero">مسح <xliff:g>%d</xliff:g> بطاقة</item>
-        <item quantity="one">مسح <xliff:g>%d</xliff:g> بطاقة</item>
-        <item quantity="two">مسح <xliff:g>%d</xliff:g> بطاقتين</item>
-        <item quantity="few">مسح <xliff:g>%d</xliff:g> بطائق</item>
-        <item quantity="many">مسح <xliff:g>%d</xliff:g> بطاقة</item>
-        <item quantity="other">مسح <xliff:g>%d</xliff:g> بطاقة</item>
+        <item quantity="zero">حذف <xliff:g>%d</xliff:g> بطاقة</item>
+        <item quantity="one">حذف <xliff:g>%d</xliff:g> بطاقة</item>
+        <item quantity="two">حذف <xliff:g>%d</xliff:g> بطاقتَين</item>
+        <item quantity="few">حذف <xliff:g>%d</xliff:g> من البطاقات</item>
+        <item quantity="many">حذف <xliff:g>%d</xliff:g> من البطاقات</item>
+        <item quantity="other">حذف <xliff:g>%d</xliff:g> من البطاقات</item>
     </plurals>
     <plurals name="deleteCardsConfirmation">
-        <item quantity="zero">مسح هذه <xliff:g>%d</xliff:g> البطاقة نهائيا؟</item>
-        <item quantity="one">مسح هذه <xliff:g>%d</xliff:g> البطاقة نهائيا؟</item>
-        <item quantity="two">مسح هذه <xliff:g>%d</xliff:g> البطاقتين نهائيا؟</item>
-        <item quantity="few">مسح هذه <xliff:g>%d</xliff:g> البطاقات نهائيا؟</item>
-        <item quantity="many">مسح هذه <xliff:g>%d</xliff:g> البطاقات نهائيا؟</item>
-        <item quantity="other">مسح هذه <xliff:g>%d</xliff:g> البطاقات نهائيا؟</item>
+        <item quantity="zero">حذف هذه <xliff:g>%d</xliff:g> البطاقة نهائيًا؟</item>
+        <item quantity="one">حذف هذه <xliff:g>%d</xliff:g> البطاقة نهائيًا؟</item>
+        <item quantity="two">حذف هذه <xliff:g>%d</xliff:g> البطاقتين نهائيًا؟</item>
+        <item quantity="few">حذف هذه <xliff:g>%d</xliff:g> البطاقات نهائيًا؟</item>
+        <item quantity="many">حذف هذه <xliff:g>%d</xliff:g> البطاقات نهائيًا؟</item>
+        <item quantity="other">حذف هذه <xliff:g>%d</xliff:g> البطاقات نهائيًا؟</item>
     </plurals>
     <string name="importOptionFilesystemTitle">الاستيراد من نظام الملفات</string>
-    <string name="importOptionFilesystemExplanation">اختر ملفًا محددًا من نظام الملفات.</string>
+    <string name="importOptionFilesystemExplanation">اختر ملفًا محددًا من نظام الملفات</string>
     <string name="about_title_fmt">حول <xliff:g id="app_name">%s</xliff:g></string>
     <string name="debug_version_fmt">نسخة: <xliff:g id="version">%s</xliff:g></string>
     <string name="settings_system_theme">النظام</string>
@@ -221,11 +213,10 @@
     <string name="report_error">الإبلاغ عن خطأ</string>
     <string name="sort_by_expiry">انقضاء</string>
     <string name="importLoyaltyCardKeychain">الاستيراد من Loyalty Card Keychain</string>
-    <string name="importLoyaltyCardKeychainMessage">حدّد ملفك <i>LoyaltyCardKeychain.csv</i> التصدير من Loyalty Card Keychain للاستيراد. \nإنشئها من قائمة الاستيراد / التصدير في Loyalty Card Keychain بالضغط على تصدير هناك أولاً.</string>
+    <string name="importLoyaltyCardKeychainMessage">حدد تصديرك من سلسلة مفاتيح بطاقة الولاء للتصدير.\nانشئها من قائمة استيراد/تصدير في سلسلة مفاتيح بطاقة الولاء عبر ضغط زر تصدير.</string>
     <string name="failedGeneratingShareURL">تعذر إنشاء عنوان URL قابل للمشاركة</string>
     <string name="help_translate_this_app">ساعد في ترجمة هذا التطبيق</string>
     <string name="on_google_play">على Google Play</string>
-    <string name="settings_theme_color">لون المظهر</string>
     <string name="previousCard">السابق</string>
     <string name="nextCard">التالي</string>
     <string name="failedToRetrieveImageFile">فشل في استخراج ملف الصورة</string>
@@ -237,17 +228,17 @@
     <string name="importCards">استيراد البطاقات</string>
     <string name="newBalanceSentence">الرصيد الجديد: <xliff:g>%s</xliff:g></string>
     <string name="cameraPermissionDeniedTitle">تعذر الوصول إلى الكاميرا</string>
-    <string name="noCameraPermissionDirectToSystemSetting">لمسح الباركود، ستحتاج Catima إلى الوصول إلى الكاميرا. اضغط هنا لتغيير إعدادات الأذونات.</string>
+    <string name="noCameraPermissionDirectToSystemSetting">لمسح الباركود، ستحتاج كاتيما إلى الوصول إلى الكاميرا. اضغط هنا لتغيير إعدادات الأذونات.</string>
     <string name="updateBalance">تحديث الرصيد</string>
     <string name="updateBalanceHint">أدخل المبلغ</string>
-    <string name="storageReadPermissionRequired">الصلاحيه للوصل للتخزين مطلوبة لهذا الاجراء…</string>
+    <string name="storageReadPermissionRequired">الصلاحيه للوصول للتخزين مطلوبة لهذا الاجراء…</string>
     <string name="validFromDate">عربيه</string>
     <string name="cameraPermissionRequired">إذن للوصول إلى الكاميرا اللازمة لهذا الإجراء…</string>
     <string name="anyDate">أي تاريخ</string>
     <string name="chooseValidFromDate">اختر صالح من التاريخ</string>
     <string name="validFromSentence">صالح من:<xliff:g>%s</xliff:g></string>
     <string name="height">الطول</string>
-    <string name="permissionReadCardsDescription">اقرأ بطاقتك مع جميع التفاصيل، بما فيه الملاحضات والصور</string>
+    <string name="permissionReadCardsDescription">اقرأ بطاقتك مع جميع التفاصيل، بما فيه الملاحظات والصور</string>
     <string name="settings_display_barcode_max_brightness_summary">ظروري لعمل بعض الماسحات الضوئية</string>
     <string name="permissionReadCardsLabel">اقرأ بطاقات كاتيما</string>
     <string name="app_copyright_fmt" tools:ignore="PluralsCandidate">حقوق النشر © 2019–<xliff:g>%d</xliff:g> Sylvia van Os والمساهمون</string>
@@ -289,7 +280,7 @@
     <string name="spend">انفق</string>
     <string name="receive">استلم</string>
     <string name="amountParsingFailed">كمية غير صحيحة</string>
-    <string name="add_manually_warning_message">في بعض المتاجر قيمة الباركود تختلف عن الرقم الموجود على البطاقة. لهذا السبب إدخال الباركود يدوياً لن ينجح دائماً. من المستحسن فحص الباركود بكاميرا بدلا من ذالك. هل انت مُصِر على الاستكمال؟</string>
+    <string name="add_manually_warning_message">بالنسبة لبعض البطاقات، تختلف قيمة الرمز الشريطي عن الرقم المكتوب عليها. لذا، قد لا ينجح إدخال الرمز الشريطي يدويًا دائمًا. يُنصح بمسح الرمز الشريطي باستخدام الكاميرا. هل ما زلت ترغب في المتابعة؟</string>
     <string name="addFromPdfFile">تحديد ملف PDF</string>
     <string name="errorReadingFile">لا يمكن قراءة الملف</string>
     <string name="failedLaunchingFileManager">لم يتم العثور على مدير ملفات مدعوم</string>
@@ -300,7 +291,7 @@
     <string name="exportCancelled">تم الغاء الاستخراج</string>
     <string name="useFrontImage">استخدام صورة أمامية</string>
     <string name="useBackImage">استخدم صورة خلفية</string>
-    <string name="addFromPkpass">اختر ملف الدفتر (.pkpass)</string>
+    <string name="addFromPkpass">اختر ملف الدفتر الحساب [Passbook] (.pkpass. / pkpasses)</string>
     <string name="unsupportedFile">هذا الملف غير مدعوم</string>
     <string name="generic_error_please_retry">حدث خطأ ما</string>
     <string name="settings_use_volume_keys_navigation">بدّل البطاقات باستخدام أزرار الصوت</string>
@@ -322,4 +313,21 @@
     <string name="card_list_widget_name">قائمة البطاقات</string>
     <string name="cardWithNumber">البطاقة <xliff:g>%d</xliff:g></string>
     <string name="cardWithNumberAndLocale">البطاقة <xliff:g>%d</xliff:g> (<xliff:g>%s</xliff:g>)</string>
+    <string name="card_list_widget_empty">بعد أن تضيف بطاقات الولاء في كاتيما، ستظهر هنا. وإذا كنت تملك البطاقات، تأكد من عدم وجودهن جميعا في الأرشفة.</string>
+    <string name="pleaseDoNotRotateTheDevice">نرجو منك عدم تدوير الجهاز، أو سيُلغى هذا الإجراء</string>
+    <string name="acra_catima_has_crashed">نأسف، لقد توقف <xliff:g id="app_name">%s</xliff:g>. ساعدنا في إصلاح هذه المشكلة من خلال إرسال تقرير للأخطاء.</string>
+    <string name="acra_explain_crash">بقدر الإمكان، نرجو منك أن تضيف مزيدا من المعلومات عمَّ كنت تفعل هنا:</string>
+    <string name="acra_crash_email_subject">تقرير الأخطاء لـ<xliff:g id="app_name">%s</xliff:g></string>
+    <string name="copy_value">قيمة النسخ</string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="nothing_to_copy">لم يتم العثور على قيمة</string>
+    <string name="barcodeEncoding">طريقة ترميز الرمز الشريطي \"الباركود\"</string>
+    <string name="back">رجوع</string>
+    <string name="pref_enable_acra">إخطار بإرسال تقارير الأخطاء</string>
+    <string name="pref_enable_acra_summary">عند التفعيل, سيتم سؤالك للابلاغ بالاعطال عندما تحدث. لا ولن يتم الابلاغ بالاعطال تلفائيا.</string>
+    <string name="settings_disable_nfc_while_viewing_card">وقف NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">وقف NFC لمنع NFC من العمل أثناء عرض بطاقة</string>
+    <string name="nfc_blocked_while_viewing_card">NFC موقوف</string>
+    <string name="change_settings">تغير الاعدادات</string>
+    <string name="nfc_block_system_error">فشل في ايقاف NFC</string>
 </resources>

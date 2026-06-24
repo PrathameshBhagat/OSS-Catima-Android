@@ -1,6 +1,75 @@
 # Changelog
 
-## Unreleased - 153
+## v2.42.1 - 166 (2026-05-16)
+
+- Prevent crash on devices with misbehaving NFC
+
+## v2.42.0 - 165 (2026-05-06)
+
+- Disable NFC while showing a card by default
+- Ask keyboard to capitalize each word in store name in edit screen
+- Put date in export file name
+
+## v2.41.7 - 164 (2026-03-06)
+
+Android 5.0 and 5.1 are no longer supported starting with this release. If you want to use Catima on these versions, please use version 2.41.6.
+
+- Fix crash when switching cards using volume buttons if only one card is available
+- Fix shortcut returning to previous card after rotation
+
+## v2.41.6 - 163 (2026-01-23)
+
+- Auto-detect URLs in card ID and make the clickable in card ID details pop-up
+- Fix barcode selector activity showing white squares instead of barcodes
+
+## v2.41.5 - 162 (2026-01-15)
+
+- Fix list widget sometimes opening wrong card
+- Fix several bugs with shortcut handling
+- Fix About activity not using pure black title bar in OLED mode
+- Fully remove automatic barcode encoding detection
+- Expose barcode encoding through ContentProvider (used by Gadgetbridge)
+
+## v2.41.4 - 161 (2026-01-04)
+
+- Disable automatic barcode encoding detection for now (breaks too many cards)
+
+## v2.41.3 - 160 (2026-01-04)
+
+- Follow-up for fix in 2.41.2 for cards explicitly set to ISO-8859-1
+- Migrate old cards to ISO-8859-1 to fix sudden behaviour differences for existing cards
+
+## v2.41.2 - 159 (2026-01-03)
+
+- Fix change introduced in 2.41.0 that broke support for some scanners for non-UTF-8 barcodes
+
+## v2.41.1 - 158 (2025-12-31)
+
+- Fix status and navigation bar colour in new About activity
+
+## v2.41.0 - 157 (2025-12-30)
+
+- Add support for UTF-8 barcodes
+- Add duplicate option to main screen and reorder options slightly
+- Fix column count setting not being applied to group card list
+- Remove theme colour support
+- Reduce max photo size to reduce storage use (only for newly added photos)
+- Migrate About activity from Android XML to Jetpack Compose
+
+## v2.40.0 - 156 (2025-12-08)
+
+- Copy card ID to clipboard from view dialog or long press
+- Swap balance and currency fields to hopefully reduce unintended rounding
+
+## v2.39.2 - 155 (2025-11-04)
+
+- Preparations for future improvements (rewrote many classes to Kotlin)
+
+## v2.39.1 - 154 (2025-10-01)
+
+- Fix possible crash that could occur for cards missing colour information in the database
+
+## v2.39.0 - 153 (2025-09-30)
 
 - Target Android 16
 - Fix possible crash after removing image from card

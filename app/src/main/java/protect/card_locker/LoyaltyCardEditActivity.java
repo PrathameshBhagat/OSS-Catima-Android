@@ -70,6 +70,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -123,11 +125,12 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
     ChipGroup groupsChips;
     AutoCompleteTextView validFromField;
     AutoCompleteTextView expiryField;
-    EditText balanceField;
     AutoCompleteTextView balanceCurrencyField;
+    EditText balanceField;
     TextView cardIdFieldView;
     AutoCompleteTextView barcodeIdField;
     AutoCompleteTextView barcodeTypeField;
+    AutoCompleteTextView barcodeEncodingField;
     ImageView barcodeImage;
     View barcodeImageLayout;
     View barcodeCaptureLayout;
@@ -148,9 +151,9 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
     boolean onRestoring = false;
     AlertDialog confirmExitDialog = null;
 
-    boolean validBalance = true;
     HashMap<String, Currency> currencies = new HashMap<>();
     HashMap<String, String> currencySymbols = new HashMap<>();
+    boolean validBalance = true;
 
     ActivityResultLauncher<Uri> mPhotoTakerLauncher;
     ActivityResultLauncher<Intent> mPhotoPickerLauncher;
@@ -193,14 +196,14 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         viewModel.setHasChanged(true);
     }
 
-    protected void setLoyaltyCardBalance(@NonNull BigDecimal balance) {
-        viewModel.getLoyaltyCard().setBalance(balance);
+    protected void setLoyaltyCardBalanceType(@Nullable Currency balanceType) {
+        viewModel.getLoyaltyCard().setBalanceType(balanceType);
 
         viewModel.setHasChanged(true);
     }
 
-    protected void setLoyaltyCardBalanceType(@Nullable Currency balanceType) {
-        viewModel.getLoyaltyCard().setBalanceType(balanceType);
+    protected void setLoyaltyCardBalance(@NonNull BigDecimal balance) {
+        viewModel.getLoyaltyCard().setBalance(balance);
 
         viewModel.setHasChanged(true);
     }
@@ -223,6 +226,14 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
 
     protected void setLoyaltyCardBarcodeType(@Nullable CatimaBarcode barcodeType) {
         viewModel.getLoyaltyCard().setBarcodeType(barcodeType);
+
+        generateBarcode();
+
+        viewModel.setHasChanged(true);
+    }
+
+    protected void setLoyaltyCardBarcodeEncoding(@NonNull Charset barcodeEncoding) {
+        viewModel.getLoyaltyCard().setBarcodeEncoding(barcodeEncoding);
 
         generateBarcode();
 
@@ -329,11 +340,12 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         groupsChips = binding.groupChips;
         validFromField = binding.validFromField;
         expiryField = binding.expiryField;
-        balanceField = binding.balanceField;
         balanceCurrencyField = binding.balanceCurrencyField;
+        balanceField = binding.balanceField;
         cardIdFieldView = binding.cardIdView;
         barcodeIdField = binding.barcodeIdField;
         barcodeTypeField = binding.barcodeTypeField;
+        barcodeEncodingField = binding.barcodeEncodingField;
         barcodeImage = binding.barcode;
         barcodeImage.setClipToOutline(true);
         barcodeImageLayout = binding.barcodeLayout;
@@ -372,33 +384,6 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         addDateFieldTextChangedListener(expiryField, R.string.never, R.string.chooseExpiryDate, LoyaltyCardField.expiry);
 
         setMaterialDatePickerResultListener();
-
-        balanceField.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus && !onResuming && !onRestoring) {
-                if (balanceField.getText().toString().isEmpty()) {
-                    setLoyaltyCardBalance(BigDecimal.valueOf(0));
-                }
-
-                balanceField.setText(Utils.formatBalanceWithoutCurrencySymbol(viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType));
-            }
-        });
-
-        balanceField.addTextChangedListener(new SimpleTextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (onResuming || onRestoring) return;
-                try {
-                    BigDecimal balance = Utils.parseBalance(s.toString(), viewModel.getLoyaltyCard().balanceType);
-                    setLoyaltyCardBalance(balance);
-                    balanceField.setError(null);
-                    validBalance = true;
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    balanceField.setError(getString(R.string.balanceParsingFailed));
-                    validBalance = false;
-                }
-            }
-        });
 
         balanceCurrencyField.addTextChangedListener(new SimpleTextWatcher() {
             @Override
@@ -449,6 +434,33 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
                 currencyList.add(0, getString(R.string.points));
                 ArrayAdapter<String> currencyAdapter = new ArrayAdapter<>(LoyaltyCardEditActivity.this, android.R.layout.select_dialog_item, currencyList);
                 balanceCurrencyField.setAdapter(currencyAdapter);
+            }
+        });
+
+        balanceField.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus && !onResuming && !onRestoring) {
+                if (balanceField.getText().toString().isEmpty()) {
+                    setLoyaltyCardBalance(BigDecimal.valueOf(0));
+                }
+
+                balanceField.setText(Utils.formatBalanceWithoutCurrencySymbol(viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType));
+            }
+        });
+
+        balanceField.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (onResuming || onRestoring) return;
+                try {
+                    BigDecimal balance = Utils.parseBalance(s.toString(), viewModel.getLoyaltyCard().balanceType);
+                    setLoyaltyCardBalance(balance);
+                    balanceField.setError(null);
+                    validBalance = true;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    balanceField.setError(getString(R.string.balanceParsingFailed));
+                    validBalance = false;
+                }
             }
         });
 
@@ -577,6 +589,25 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
             }
         });
 
+        barcodeEncodingField.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+                    Log.d(TAG, "Setting barcode encoding to " + s.toString());
+                    setLoyaltyCardBarcodeEncoding(Charset.forName(s.toString()));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ArrayList<String> barcodeEncodingList = new ArrayList<>();
+                barcodeEncodingList.add(StandardCharsets.ISO_8859_1.name());
+                barcodeEncodingList.add(StandardCharsets.UTF_8.name());
+                ArrayAdapter<String> barcodeEncodingAdapter = new ArrayAdapter<>(LoyaltyCardEditActivity.this, android.R.layout.select_dialog_item, barcodeEncodingList);
+                barcodeEncodingField.setAdapter(barcodeEncodingAdapter);
+            }
+        });
+
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -688,6 +719,14 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mDatabase != null && mDatabase.isOpen()) {
+            mDatabase.close();
+        }
+        super.onDestroy();
+    }
+
     private void selectTab(int index) {
         binding.tabs.selectTab(binding.tabs.getTabAt(index));
         viewModel.setTabIndex(index);
@@ -719,7 +758,6 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         int colorOnSurface = MaterialColors.getColor(this, com.google.android.material.R.attr.colorOnSurface, ContextCompat.getColor(this, R.color.md_theme_light_onSurface));
         int colorBackground = MaterialColors.getColor(this, android.R.attr.colorBackground, ContextCompat.getColor(this, R.color.md_theme_light_onSurface));
         mCropperOptions.setToolbarColor(colorSurface);
-        mCropperOptions.setStatusBarColor(colorSurface);
         mCropperOptions.setToolbarWidgetColor(colorOnSurface);
         mCropperOptions.setRootViewBackgroundColor(colorBackground);
         // set tool tip to be the darker of primary color
@@ -774,6 +812,8 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         barcodeIdField.setText(barcodeId != null && !barcodeId.isEmpty() ? barcodeId : getString(R.string.sameAsCardId));
         CatimaBarcode barcodeType = viewModel.getLoyaltyCard().barcodeType;
         barcodeTypeField.setText(barcodeType != null ? barcodeType.prettyName() : getString(R.string.noBarcode));
+        Charset barcodeEncoding = viewModel.getLoyaltyCard().barcodeEncoding;
+        barcodeEncodingField.setText(barcodeEncoding.name());
 
         // We set the balance here (with onResuming/onRestoring == true) to prevent formatBalanceCurrencyField() from setting it (via onTextChanged),
         // which can cause issues when switching locale because it parses the balance and e.g. the decimal separator may have changed.
@@ -1480,9 +1520,9 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         // This makes the DBHelper set it to the current date
         // So that new and edited card are always on top when sorting by recently used
         if (viewModel.getUpdateLoyaltyCard()) {
-            DBHelper.updateLoyaltyCard(mDatabase, viewModel.getLoyaltyCardId(), viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().headerColor, viewModel.getLoyaltyCard().starStatus, null, viewModel.getLoyaltyCard().archiveStatus);
+            DBHelper.updateLoyaltyCard(mDatabase, viewModel.getLoyaltyCardId(), viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, viewModel.getLoyaltyCard().starStatus, null, viewModel.getLoyaltyCard().archiveStatus);
         } else {
-            viewModel.setLoyaltyCardId((int) DBHelper.insertLoyaltyCard(mDatabase, viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().headerColor, 0, null, 0));
+            viewModel.setLoyaltyCardId((int) DBHelper.insertLoyaltyCard(mDatabase, viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, 0, null, 0));
         }
 
         try {
@@ -1495,7 +1535,7 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
 
         DBHelper.setLoyaltyCardGroups(mDatabase, viewModel.getLoyaltyCardId(), selectedGroups);
 
-        ShortcutHelper.updateShortcuts(this, DBHelper.getLoyaltyCard(this, mDatabase, viewModel.getLoyaltyCardId()));
+        ShortcutHelper.updateShortcuts(this);
 
         if (viewModel.getDuplicateFromLoyaltyCardId()) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -1597,6 +1637,7 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
 
         String cardIdString = viewModel.getLoyaltyCard().barcodeId != null ? viewModel.getLoyaltyCard().barcodeId : viewModel.getLoyaltyCard().cardId;
         CatimaBarcode barcodeFormat = viewModel.getLoyaltyCard().barcodeType;
+        Charset barcodeEncoding = viewModel.getLoyaltyCard().barcodeEncoding;
 
         if (cardIdString == null || cardIdString.isEmpty() || barcodeFormat == null) {
             barcodeImageLayout.setVisibility(View.GONE);
@@ -1616,13 +1657,13 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
                             barcodeImage.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
                             Log.d(TAG, "ImageView size now known");
-                            BarcodeImageWriterTask barcodeWriter = new BarcodeImageWriterTask(getApplicationContext(), barcodeImage, cardIdString, barcodeFormat, null, false, LoyaltyCardEditActivity.this, true, false);
+                            BarcodeImageWriterTask barcodeWriter = new BarcodeImageWriterTask(getApplicationContext(), barcodeImage, cardIdString, barcodeFormat, barcodeEncoding, null, false, LoyaltyCardEditActivity.this, true, false);
                             viewModel.getTaskHandler().executeTask(TaskHandler.TYPE.BARCODE, barcodeWriter);
                         }
                     });
         } else {
             Log.d(TAG, "ImageView size known known, creating barcode");
-            BarcodeImageWriterTask barcodeWriter = new BarcodeImageWriterTask(getApplicationContext(), barcodeImage, cardIdString, barcodeFormat, null, false, this, true, false);
+            BarcodeImageWriterTask barcodeWriter = new BarcodeImageWriterTask(getApplicationContext(), barcodeImage, cardIdString, barcodeFormat, barcodeEncoding, null, false, this, true, false);
             viewModel.getTaskHandler().executeTask(TaskHandler.TYPE.BARCODE, barcodeWriter);
         }
     }

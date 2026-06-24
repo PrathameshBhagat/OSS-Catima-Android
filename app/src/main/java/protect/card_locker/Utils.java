@@ -118,7 +118,7 @@ public class Utils {
     static final double LUMINANCE_MIDPOINT = 0.5;
 
     static final int BITMAP_SIZE_SMALL = 512;
-    static final int BITMAP_SIZE_BIG = 2048;
+    static final int BITMAP_SIZE_BIG = 1600;
 
     static public LetterBitmap generateIcon(Context context, LoyaltyCard loyaltyCard, boolean forShortcut) {
         return generateIcon(context, loyaltyCard.store, loyaltyCard.headerColor, forShortcut);
@@ -143,7 +143,7 @@ public class Utils {
         int pixelSize = context.getResources().getDimensionPixelSize(R.dimen.tileLetterImageSize);
 
         if (backgroundColor == null) {
-            backgroundColor = LetterBitmap.getDefaultColor(context, store);
+            backgroundColor = LetterBitmap.Companion.getDefaultColor(context, store);
         }
 
         return new LetterBitmap(context, store, store,
@@ -963,31 +963,9 @@ public class Utils {
     // replace colors in the current theme
     public static void patchColors(AppCompatActivity activity) {
         Settings settings = new Settings(activity);
-        String color = settings.getColor();
 
         Resources.Theme theme = activity.getTheme();
-        Resources resources = activity.getResources();
-        if (color.equals(resources.getString(R.string.settings_key_pink_theme))) {
-            theme.applyStyle(R.style.pink, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_magenta_theme))) {
-            theme.applyStyle(R.style.magenta, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_violet_theme))) {
-            theme.applyStyle(R.style.violet, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_blue_theme))) {
-            theme.applyStyle(R.style.blue, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_sky_blue_theme))) {
-            theme.applyStyle(R.style.skyblue, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_green_theme))) {
-            theme.applyStyle(R.style.green, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_brown_theme))) {
-            theme.applyStyle(R.style.brown, true);
-        } else if (color.equals(resources.getString(R.string.settings_key_catima_theme))) {
-            // catima theme is AppTheme itself, no dynamic colors nor applyStyle
-        } else {
-            // final catch all in case of invalid theme value from older versions
-            // also handles R.string.settings_key_system_theme
-            DynamicColors.applyToActivityIfAvailable(activity);
-        }
+        DynamicColors.applyToActivityIfAvailable(activity);
 
         if (isDarkModeEnabled(activity) && settings.getOledDark()) {
             theme.applyStyle(R.style.DarkBackground, true);
@@ -1129,7 +1107,7 @@ public class Utils {
     }
 
     public static int getHeaderColor(Context context, LoyaltyCard loyaltyCard) {
-        return loyaltyCard.headerColor != null ? loyaltyCard.headerColor : LetterBitmap.getDefaultColor(context, loyaltyCard.store);
+        return loyaltyCard.headerColor != null ? loyaltyCard.headerColor : LetterBitmap.Companion.getDefaultColor(context, loyaltyCard.store);
     }
 
     public static String checksum(InputStream input) throws IOException {

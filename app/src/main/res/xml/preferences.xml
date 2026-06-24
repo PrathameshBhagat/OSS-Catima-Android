@@ -16,16 +16,6 @@
             app:singleLineTitle="false"
             app:useSimpleSummaryProvider="true" />
 
-        <ListPreference
-            android:key="@string/setting_key_theme_color"
-            android:title="@string/settings_theme_color"
-            android:defaultValue="@string/settings_key_system_theme"
-            android:entries="@array/color_value_strings"
-            android:entryValues="@array/color_values"
-            app:iconSpaceReserved="false"
-            app:singleLineTitle="false"
-            app:useSimpleSummaryProvider="true" />
-
         <SwitchPreferenceCompat
             android:widgetLayout="@layout/preference_material_switch"
             android:defaultValue="false"
@@ -117,6 +107,15 @@
             android:key="@string/settings_key_disable_lockscreen_while_viewing_card"
             android:summary="@string/settings_disable_lockscreen_while_viewing_card_summary"
             android:title="@string/settings_disable_lockscreen_while_viewing_card"
+            app:iconSpaceReserved="false"
+            app:singleLineTitle="false" />
+
+        <SwitchPreferenceCompat
+            android:widgetLayout="@layout/preference_material_switch"
+            android:defaultValue="true"
+            android:key="@string/settings_key_disable_nfc_while_viewing_card"
+            android:summary="@string/settings_disable_nfc_while_viewing_card_summary"
+            android:title="@string/settings_disable_nfc_while_viewing_card"
             app:iconSpaceReserved="false"
             app:singleLineTitle="false" />
     </PreferenceCategory>

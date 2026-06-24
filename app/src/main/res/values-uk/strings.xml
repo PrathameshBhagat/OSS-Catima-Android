@@ -150,17 +150,8 @@
         <item quantity="many">Видалити ці <xliff:g>%d</xliff:g> карток назавжди\?</item>
         <item quantity="other">Видалити ці <xliff:g>%d</xliff:g> карток назавжди\?</item>
     </plurals>
-    <string name="settings_blue_theme">Синій</string>
-    <string name="settings_violet_theme">Фіолетовий</string>
-    <string name="settings_magenta_theme">Пурпуровий</string>
-    <string name="settings_pink_theme">Рожевий</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_theme_color">Колір теми</string>
     <string name="settings_system_locale">Системна</string>
     <string name="settings_locale">Мова</string>
-    <string name="settings_brown_theme">Коричневий</string>
-    <string name="settings_green_theme">Зелений</string>
-    <string name="settings_sky_blue_theme">Небесно-синій</string>
     <string name="app_contributors">Стало можливим завдяки: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="noGroupCards">Пуста група</string>
     <string name="barcodeImageDescriptionWithType">Зображення штрих-коду <xliff:g>%s</xliff:g></string>
@@ -317,4 +308,14 @@
     <string name="acra_crash_email_subject">Звіт про збій <xliff:g id="app_name">%s</xliff:g></string>
     <string name="pref_enable_acra">Запит на надсилання звітів про збої</string>
     <string name="pref_enable_acra_summary">Якщо цю функцію ввімкнено, вам буде запропоновано повідомити про збій, коли він станеться. Звіти про збої ніколи не надсилаються автоматично.</string>
+    <string name="copy_value">Копіювати значення</string>
+    <string name="copied_to_clipboard">Скопійовано в буфер обміну</string>
+    <string name="nothing_to_copy">Значення не знайдено</string>
+    <string name="barcodeEncoding">Кодування штрих-кодів</string>
+    <string name="back">Назад</string>
+    <string name="settings_disable_nfc_while_viewing_card">Зупинити NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Зупиняє NFC щоб уникнути NFC платежів під час перегляду карти</string>
+    <string name="nfc_blocked_while_viewing_card">NFC зупинений</string>
+    <string name="change_settings">Змінити налаштування</string>
+    <string name="nfc_block_system_error">Не вдалось зупинити NFC</string>
 </resources>

@@ -143,15 +143,6 @@
         <item quantity="other">Желаете ли тези <xliff:g>%d</xliff:g> карти да бъдат премахнати\?</item>
     </plurals>
     <string name="app_contributors">Осъществено от: <xliff:g id="app_contributors">%s</xliff:g></string>
-    <string name="settings_brown_theme">Кафяво</string>
-    <string name="settings_green_theme">Зелено</string>
-    <string name="settings_sky_blue_theme">Небесносиньо</string>
-    <string name="settings_blue_theme">Синьо</string>
-    <string name="settings_violet_theme">Виолетово</string>
-    <string name="settings_magenta_theme">Цикламено</string>
-    <string name="settings_pink_theme">Розово</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_theme_color">Цвят на темата</string>
     <string name="settings_system_locale">Система</string>
     <string name="settings_locale">Език</string>
     <string name="noGroupCards">Групата е празна</string>
@@ -305,4 +296,14 @@
     <string name="pref_enable_acra">Питане преди изпращане на доклад за срив</string>
     <string name="pref_enable_acra_summary">Когато е отметнато, при срив ще ви бъде предложено да докладвате за него. Докладите никога не се изпращат автоматично.</string>
     <string name="acra_explain_crash">Ако е възможно добавете подробности за вашите действия:</string>
+    <string name="copy_value">Копиране на стойността</string>
+    <string name="copied_to_clipboard">Копирано</string>
+    <string name="nothing_to_copy">Няма стойност</string>
+    <string name="back">Назад</string>
+    <string name="barcodeEncoding">Кодиране на щрихкода</string>
+    <string name="settings_disable_nfc_while_viewing_card">Пауза на NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Спира NFC, за да бъдат предотвратени безконтактни плащания при преглед на карта</string>
+    <string name="nfc_blocked_while_viewing_card">NFC е на пауза</string>
+    <string name="change_settings">Настройки</string>
+    <string name="nfc_block_system_error">Грешка при спиране на NFC</string>
 </resources>

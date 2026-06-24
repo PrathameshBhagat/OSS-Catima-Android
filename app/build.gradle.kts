@@ -1,8 +1,10 @@
 import com.android.build.gradle.internal.tasks.factory.dependsOn
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.compose)
 }
 
 kotlin {
@@ -15,15 +17,15 @@ android {
 
     defaultConfig {
         applicationId = "me.hackerchick.catima"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
-        versionCode = 152
-        versionName = "2.38.0"
+        versionCode = 166
+        versionName = "2.42.1"
 
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
 
-        resourceConfigurations += listOf("ar", "be", "bg", "bn", "bn-rIN", "bs", "cs", "da", "de", "el-rGR", "en", "eo", "es", "es-rAR", "et", "fa", "fi", "fr", "gl", "he-rIL", "hi", "hr", "hu", "in-rID", "is", "it", "ja", "ko", "lt", "lv", "nb-rNO", "nl", "oc", "pl", "pt", "pt-rBR", "pt-rPT", "ro-rRO", "ru", "sk", "sl", "sr", "sv", "ta", "tr", "uk", "vi", "zh-rCN", "zh-rTW")
+        resourceConfigurations += listOf("ar", "be", "bg", "bn", "bn-rIN", "bs", "cs", "da", "de", "el-rGR", "en", "eo", "es", "es-rAR", "et", "fa", "fi", "fr", "gl", "he-rIL", "hi", "hr", "hu", "in-rID", "is", "it", "ja", "ko", "lt", "lv", "nb-rNO", "nl", "oc", "peo", "pl", "pt", "pt-rBR", "pt-rPT", "ro-rRO", "ru", "sk", "sl", "sr", "sv", "ta", "tr", "uk", "vi", "zh-rCN", "zh-rTW")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -36,7 +38,7 @@ android {
         release {
             isMinifyEnabled = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -47,6 +49,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        compose = true
         viewBinding = true
     }
 
@@ -74,16 +77,6 @@ android {
         }
     }
 
-    compileOptions {
-        encoding = "UTF-8"
-
-        // Flag to enable support for the new language APIs
-        isCoreLibraryDesugaringEnabled = true
-
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
     sourceSets {
         getByName("test") {
             resources.srcDirs("src/test/res")
@@ -102,10 +95,18 @@ android {
     lint {
         lintConfig = file("lint.xml")
     }
-    kotlinOptions {
-        jvmTarget = "21"
+
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_21
+        }
     }
     compileOptions {
+        encoding = "UTF-8"
+
+        // Flag to enable support for the new language APIs
+        isCoreLibraryDesugaringEnabled = true
+
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
@@ -113,43 +114,53 @@ android {
 
 dependencies {
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.core:core-remoteviews:1.1.0")
-    implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation("androidx.exifinterface:exifinterface:1.4.1")
-    implementation("androidx.palette:palette:1.0.0")
-    implementation("androidx.preference:preference:1.2.1")
-    implementation("com.google.android.material:material:1.13.0")
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    implementation(libs.androidx.appcompat.appcompat)
+    implementation(libs.androidx.constraintlayout.constraintlayout)
+    implementation(libs.androidx.core.core.ktx)
+    implementation(libs.androidx.core.core.remoteviews)
+    implementation(libs.androidx.core.core.splashscreen)
+    implementation(libs.androidx.exifinterface.exifinterface)
+    implementation(libs.androidx.palette.palette)
+    implementation(libs.androidx.preference.preference)
+    implementation(libs.com.google.android.material.material)
+    coreLibraryDesugaring(libs.com.android.tools.desugar.jdk.libs)
+
+    // Compose
+    implementation(libs.androidx.activity.activity.compose)
+    val composeBom = platform(libs.androidx.compose.compose.bom)
+    implementation(composeBom)
+    implementation(libs.androidx.compose.foundation.foundation)
+    implementation(libs.androidx.compose.material3.material3)
+    implementation(libs.androidx.compose.material.material.icons.extended)
+    implementation(libs.androidx.compose.ui.ui.tooling.preview.android)
+    debugImplementation(libs.androidx.compose.ui.ui.test.manifest)
+
+    androidTestImplementation(composeBom)
+    androidTestImplementation(libs.androidx.compose.ui.ui.test.junit4)
 
     // Third-party
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0@aar")
-    implementation("com.github.yalantis:ucrop:2.2.10")
-    implementation("com.google.zxing:core:3.5.3")
-    implementation("org.apache.commons:commons-csv:1.9.0")
-    implementation("com.jaredrummler:colorpicker:1.1.0")
-    implementation("net.lingala.zip4j:zip4j:2.11.5")
+    implementation(libs.com.journeyapps.zxing.android.embedded)
+    implementation(libs.com.github.yalantis.ucrop)
+    implementation(libs.com.google.zxing.core)
+    implementation(libs.org.apache.commons.commons.csv)
+    implementation(libs.com.jaredrummler.colorpicker)
+    implementation(libs.net.lingala.zip4j.zip4j)
 
     // Crash reporting
-    val acraVersion = "5.13.1"
-    implementation("ch.acra:acra-mail:$acraVersion")
-    implementation("ch.acra:acra-dialog:$acraVersion")
+    implementation(libs.bundles.acra)
 
     // Testing
-    val androidXTestVersion = "1.7.0"
-    val junitVersion = "4.13.2"
-    testImplementation("androidx.test:core:$androidXTestVersion")
-    testImplementation("junit:junit:$junitVersion")
-    testImplementation("org.robolectric:robolectric:4.16")
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.org.robolectric.robolectric)
 
-    androidTestImplementation("androidx.test:core:$androidXTestVersion")
-    androidTestImplementation("junit:junit:$junitVersion")
-    androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation("androidx.test:runner:$androidXTestVersion")
-    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
+    androidTestImplementation(libs.bundles.androidx.test)
+    androidTestImplementation(libs.junit.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.uiautomator.uiautomator)
+    androidTestImplementation(libs.androidx.test.espresso.espresso.core)
 }
 
 tasks.register("copyRawResFiles", Copy::class) {

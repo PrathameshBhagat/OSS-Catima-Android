@@ -101,6 +101,9 @@
     <string name="settings_key_keep_screen_on" translatable="false">pref_keep_screen_on</string>
     <string name="settings_disable_lockscreen_while_viewing_card">Prevent screen lock</string>
     <string name="settings_disable_lockscreen_while_viewing_card_summary">Disables screen lock while viewing a card</string>
+    <string name="settings_disable_nfc_while_viewing_card">Pause NFC</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Pauses NFC to prevent NFC payments from triggering while viewing a card</string>
+    <string name="settings_key_disable_nfc_while_viewing_card" translatable="false">pref_disable_nfc_while_viewing_card</string>
     <string name="settings_allow_content_provider_read_title">Allow other apps to access my data</string>
     <string name="settings_allow_content_provider_read_summary">Apps will still have to request permission to be granted access</string>
     <string name="settings_key_disable_lockscreen_while_viewing_card" translatable="false">pref_disable_lockscreen_while_viewing_card</string>
@@ -211,24 +214,6 @@
     <string name="settings_system_locale">System</string>
     <string name="selectColor">Select color</string>
     <string name="setIcon">Set thumbnail</string>
-    <string name="setting_key_theme_color" translatable="false">pref_theme_color</string>
-    <string name="settings_theme_color">Theme color</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_pink_theme">Pink</string>
-    <string name="settings_magenta_theme">Magenta</string>
-    <string name="settings_violet_theme">Violet</string>
-    <string name="settings_blue_theme">Blue</string>
-    <string name="settings_sky_blue_theme">Sky blue</string>
-    <string name="settings_green_theme">Green</string>
-    <string name="settings_brown_theme">Brown</string>
-    <string name="settings_key_catima_theme" translatable="false">catima_theme</string>
-    <string name="settings_key_pink_theme" translatable="false">pink_theme</string>
-    <string name="settings_key_magenta_theme" translatable="false">magenta_theme</string>
-    <string name="settings_key_violet_theme" translatable="false">violet_theme</string>
-    <string name="settings_key_blue_theme" translatable="false">blue_theme</string>
-    <string name="settings_key_sky_blue_theme" translatable="false">sky_blue_theme</string>
-    <string name="settings_key_green_theme" translatable="false">green_theme</string>
-    <string name="settings_key_brown_theme" translatable="false">brown_theme</string>
     <string name="app_contributors">Made possible by: <xliff:g id="app_contributors">%s</xliff:g></string>
     <string name="sort">Sort</string>
     <string name="showMoreInfo">Show info</string>
@@ -358,4 +343,12 @@
     <string name="acra_crash_email_subject"><xliff:g id="app_name">%s</xliff:g> crash report</string>
     <string name="pref_enable_acra">Ask to send crash reports</string>
     <string name="pref_enable_acra_summary">When enabled, you will be asked to report a crash when it happens. Crash reports are never sent automatically.</string>
+    <string name="copy_value">Copy value</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="nothing_to_copy">No value found</string>
+    <string name="barcodeEncoding">Barcode encoding</string>
+    <string name="back">Back</string>
+    <string name="nfc_blocked_while_viewing_card">NFC is paused</string>
+    <string name="change_settings">Change settings</string>
+    <string name="nfc_block_system_error">Failed to pause NFC</string>
 </resources>

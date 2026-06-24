@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_contributors">Katkıda bulunanlar: <xliff:g id="app_contributors">%s</xliff:g></string>
-    <string name="settings_brown_theme">Kahverengi</string>
-    <string name="settings_green_theme">Yeşil</string>
-    <string name="settings_sky_blue_theme">Gök mavisi</string>
-    <string name="settings_blue_theme">Mavi</string>
-    <string name="settings_violet_theme">Mor</string>
-    <string name="settings_magenta_theme">Eflatun</string>
-    <string name="settings_pink_theme">Pembe</string>
-    <string name="settings_catima_theme">Catima</string>
-    <string name="settings_theme_color">Tema rengi</string>
     <string name="settings_system_locale">Sistem</string>
     <string name="settings_locale">Dil</string>
     <string name="turn_flashlight_off">El fenerini kapat</string>
@@ -198,7 +189,7 @@
     <string name="archived">Kart arşivlendi</string>
     <string name="unarchived">Kart arşivden çıkarıldı</string>
     <string name="archive">Arşivle</string>
-    <string name="failedLaunchingPhotoPicker">"Desteklenen bir resim seçici  bulunamadı"</string>
+    <string name="failedLaunchingPhotoPicker">Desteklenen bir resim seçici bulunamadı</string>
     <plurals name="groupCardCountWithArchived">
         <item quantity="one"><xliff:g>%1$d</xliff:g> kart (<xliff:g id="archivedCount">%2$d</xliff:g> tane arşivlendi)</item>
         <item quantity="other"><xliff:g>%1$d</xliff:g> kart (<xliff:g id="archivedCount">%2$d</xliff:g> tane arşivlendi)</item>
@@ -299,4 +290,20 @@
     <string name="card_list_widget_empty">Catima\'ya sadakat kartları eklediğinizde, burada gözükecekler. Eğer kartlarınız varsa, arşivlemediğinizden emin olun.</string>
     <string name="cardWithNumber">Kart <xliff:g>%d</xliff:g></string>
     <string name="cardWithNumberAndLocale">Kart <xliff:g>%d</xliff:g> (<xliff:g>%s</xliff:g>)</string>
+    <string name="pleaseDoNotRotateTheDevice">Lütfen cihazı döndürme, bu işlemi iptal edecektir</string>
+    <string name="acra_catima_has_crashed">Üzgünüz, fakat <xliff:g id="app_name">%s</xliff:g> çöktü. Lütfen bunu çözmemize yardım etmek için bize bir hata raporu gönderin.</string>
+    <string name="acra_explain_crash">Mümkünse lütfen ne yaptığınızla ilgili daha fazla detay ekleyin:</string>
+    <string name="acra_crash_email_subject"><xliff:g id="app_name">%s</xliff:g> çökme raporu</string>
+    <string name="pref_enable_acra_summary">Etkinleştirildiğinde, bir çökmeyi şikayet etmeniz istenecektir. Çökme raporları hiç bir zaman otomatik olarak gönderilmez.</string>
+    <string name="pref_enable_acra">Çökme bildirimlerini göndermeyi iste</string>
+    <string name="copy_value">Değeri kopyala</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="nothing_to_copy">Değer bulunamadı</string>
+    <string name="barcodeEncoding">Barkod kodlaması</string>
+    <string name="back">Geri</string>
+    <string name="settings_disable_nfc_while_viewing_card">NFC\'yi duraklat</string>
+    <string name="settings_disable_nfc_while_viewing_card_summary">Kart görüntülenirken NFC ödemelerinin tetiklenmesini önlemek için NFC işlevini duraklatır</string>
+    <string name="nfc_blocked_while_viewing_card">NFC duraklatıldı</string>
+    <string name="change_settings">Ayarları değiştir</string>
+    <string name="nfc_block_system_error">NFC duraklatılamadı</string>
 </resources>
