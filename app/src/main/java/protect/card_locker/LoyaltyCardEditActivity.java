@@ -91,6 +91,7 @@ import java.util.concurrent.Callable;
 import protect.card_locker.async.TaskHandler;
 import protect.card_locker.databinding.LayoutChipChoiceBinding;
 import protect.card_locker.databinding.LoyaltyCardEditActivityBinding;
+import protect.card_locker.shared.ForegroundColorHelper;
 import protect.card_locker.viewmodels.LoyaltyCardEditActivityViewModel;
 
 public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements BarcodeImageWriterResultCallback, ColorPickerDialogListener {
@@ -896,8 +897,8 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         Integer headerColor = viewModel.getLoyaltyCard().headerColor;
         if (headerColor != null) {
             thumbnail.setOnClickListener(new ChooseCardImage());
-            thumbnailEditIcon.setBackgroundColor(Utils.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
-            thumbnailEditIcon.setColorFilter(Utils.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
+            thumbnailEditIcon.setBackgroundColor(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
+            thumbnailEditIcon.setColorFilter(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
         }
 
         onResuming = false;
@@ -919,18 +920,18 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
 
             setLoyaltyCardHeaderColor(headerColor);
 
-            thumbnail.setBackgroundColor(Utils.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
+            thumbnail.setBackgroundColor(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
 
-            thumbnailEditIcon.setBackgroundColor(Utils.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
-            thumbnailEditIcon.setColorFilter(Utils.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
+            thumbnailEditIcon.setBackgroundColor(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
+            thumbnailEditIcon.setColorFilter(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
         } else {
             generateIcon(storeFieldEdit.getText().toString().trim());
 
             Integer headerColor = viewModel.getLoyaltyCard().headerColor;
 
             if (headerColor != null) {
-                thumbnailEditIcon.setBackgroundColor(Utils.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
-                thumbnailEditIcon.setColorFilter(Utils.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
+                thumbnailEditIcon.setBackgroundColor(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.BLACK : Color.WHITE);
+                thumbnailEditIcon.setColorFilter(ForegroundColorHelper.Companion.needsDarkForeground(headerColor) ? Color.WHITE : Color.BLACK);
             }
         }
     }
@@ -1520,9 +1521,9 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
         // This makes the DBHelper set it to the current date
         // So that new and edited card are always on top when sorting by recently used
         if (viewModel.getUpdateLoyaltyCard()) {
-            DBHelper.updateLoyaltyCard(mDatabase, viewModel.getLoyaltyCardId(), viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, viewModel.getLoyaltyCard().starStatus, null, viewModel.getLoyaltyCard().archiveStatus);
+            DBHelper.updateLoyaltyCard(mDatabase, this, viewModel.getLoyaltyCardId(), viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, viewModel.getLoyaltyCard().starStatus, null, viewModel.getLoyaltyCard().archiveStatus);
         } else {
-            viewModel.setLoyaltyCardId((int) DBHelper.insertLoyaltyCard(mDatabase, viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, 0, null, 0));
+            viewModel.setLoyaltyCardId((int) DBHelper.insertLoyaltyCard(mDatabase, this, viewModel.getLoyaltyCard().store, viewModel.getLoyaltyCard().note, viewModel.getLoyaltyCard().validFrom, viewModel.getLoyaltyCard().expiry, viewModel.getLoyaltyCard().balance, viewModel.getLoyaltyCard().balanceType, viewModel.getLoyaltyCard().cardId, viewModel.getLoyaltyCard().barcodeId, viewModel.getLoyaltyCard().barcodeType, viewModel.getLoyaltyCard().barcodeEncoding, viewModel.getLoyaltyCard().headerColor, 0, null, 0));
         }
 
         try {
@@ -1533,7 +1534,7 @@ public class LoyaltyCardEditActivity extends CatimaAppCompatActivity implements 
             e.printStackTrace();
         }
 
-        DBHelper.setLoyaltyCardGroups(mDatabase, viewModel.getLoyaltyCardId(), selectedGroups);
+        DBHelper.setLoyaltyCardGroups(mDatabase, this, viewModel.getLoyaltyCardId(), selectedGroups);
 
         ShortcutHelper.updateShortcuts(this);
 
